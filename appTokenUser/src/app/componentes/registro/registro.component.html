@@ -1,0 +1,88 @@
+<div *ngIf="!cuentaCreada && !cargando && !error" class="register-container">
+  <h1>Regístrate en FacusArgs</h1>
+
+  <form [formGroup]="registerForm" (ngSubmit)="enviar()" class="register-form">
+    <div class="input-group">
+      <label for="email">Ingresa tu email</label>
+      <input type="email" id="email" formControlName="email" placeholder="ejemplo@gmail.com" />
+      <div class="error-message" *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid">
+        <span *ngIf="registerForm.get('email')?.errors?.['required']">El email es obligatorio.</span>
+        <span *ngIf="registerForm.get('email')?.errors?.['email']">Formato de email inválido.</span>
+        <span *ngIf="registerForm.get('email')?.hasError('sinEspacios') && registerForm.get('email')?.touched">
+          La dirección de correo no debe tener espacios en blanco
+        </span>
+      </div>
+    </div>
+
+    <div class="input-group">
+      <label for="text">Ingresa tu nickname</label>
+      <input type="text" id="text" formControlName="nick" placeholder="Scrapycoco" />
+      <div class="error-message" *ngIf="registerForm.get('nick')?.touched && registerForm.get('nick')?.invalid">
+        <span *ngIf="registerForm.get('nick')?.errors?.['required']">El nick es obligatorio.</span>
+        <span *ngIf="registerForm.get('nick')?.hasError('sinEspacios') && registerForm.get('nick')?.touched">
+          Tu nickName no puede contener espacios en blanco
+        </span>
+      </div>
+    </div>
+
+    <div class="input-group">
+      <label for="password">Ingresa tu contraseña</label>
+      <input [type]="mostrarContrasenia ? 'text' : 'password'" id="password" formControlName="password"
+        placeholder="Contraseña" autocomplete="new-password" />
+      <div class="error-message" *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid">
+        <span *ngIf="registerForm.get('password')?.errors?.['required']">La contraseña es obligatoria.</span>
+        <span *ngIf="registerForm.get('password')?.errors?.['contraseniaValida']">
+          La contraseña debe contener al menos una mayúscula, un número y un carácter especial.
+        </span>
+        <span *ngIf="registerForm.get('password')?.hasError('sinEspacios') && registerForm.get('password')?.touched">
+          La contraseña no debe tener espacios en blanco
+        </span>
+      </div>
+    </div>
+
+    <div class="input-group">
+      <label for="repeat-password">Repite tu contraseña</label>
+      <input [type]="mostrarContrasenia ? 'text' : 'password'" id="repeat-password" formControlName="repeatPassword"
+        placeholder="Repite tu contraseña" autocomplete="new-password" />
+      <div class="error-message"
+        *ngIf="registerForm.get('repeatPassword')?.touched && registerForm.errors?.['concidencia']">
+        Las contraseñas no coinciden.
+      </div>
+    </div>
+
+    <div class="checkbox-group">
+      <input type="checkbox" id="show-password" (change)="mostrarContrasenia = !mostrarContrasenia" />
+      <label for="show-password">Mostrar contraseña</label>
+    </div>
+
+    <div class="recaptcha-container">
+      <re-captcha formControlName="recaptcha" siteKey="6LeO030qAAAAAPAwlhiEbIoIPbk2j7nYU6OkfsEF"
+        (resolved)="onCaptchaResolved($event)">
+      </re-captcha>
+      <div class="error-message"
+        *ngIf="registerForm.get('recaptcha')?.touched && registerForm.get('recaptcha')?.invalid">
+        <span *ngIf="registerForm.get('recaptcha')?.errors?.['required']">Debes verificar que no eres un robot.</span>
+      </div>
+    </div>
+
+    <button type="submit" class="btn-submit">Crear cuenta</button>
+
+    <p class="oauth-text">O regístrate con tu cuenta de Google</p>
+    <button type="button" (click)="logueoOauth($event)" class="btn-oauth">Iniciar sesión con Google</button>
+  </form>
+</div>
+
+<!-- Pantalla de carga -->
+<div *ngIf="cargando" class="loading-message">
+  <p>Cargando...</p>
+</div>
+
+<!-- Mensaje de cuenta creada -->
+<div *ngIf="cuentaCreada" class="account-created-container">
+  <p>Tu cuenta fue creada exitosamente.</p>
+  <p>Ahora debes validarla desde tu email con el cual te has registrado.</p>
+</div>
+
+<div *ngIf="error" class="error-container">
+  <p>Error, tu cuenta no ha podido ser creada</p>
+</div>

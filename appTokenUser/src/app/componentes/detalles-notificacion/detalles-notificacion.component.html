@@ -1,0 +1,237 @@
+<div *ngIf="universidad && !registroEliminado && !infraccion && !cargando" class="section universidad">
+    <h2 class="section-title">{{ universidadBuscada?.nombre }}</h2>
+    <p class="description">{{ universidadBuscada?.descripcion }}</p>
+    <p class="address">Dirección: {{ universidadBuscada?.direccion }}</p>
+    <p> Usuario ID: {{universidadBuscada?.usuarioId}}</p>
+    <p [ngClass]="{'infracciones-altas': usuarioPropietario?.infracciones! == 3}">
+        Infracciones: {{usuarioPropietario?.infracciones}}
+    </p>
+    <p class="usuario">Por: <span class="username">{{usuarioPropietario?.username}}</span></p>
+
+    <img style="width: 50%; border: 1px solid;" class="university-image" src="{{ universidadBuscada?.imagen }}"
+        alt="Imagen de la universidad" />
+    <div class="universidad-actions">
+        <button [disabled]="universidadBuscada?.eliminacionLogica" class="btn eliminar"
+            (click)="eliminarUniversidad(universidadBuscada?.id)">Eliminar
+            universidad</button>
+        <button [disabled]="notificacionBuscada?.auditada" class="btn eliminar-reportar"
+            (click)="infraccionarUsuario(usuarioPropietario?.id)">
+            {{ usuarioPropietario?.infracciones === 3 ? 'Banear usuario' : 'Infraccionar usuario' }}
+        </button>
+    </div>
+    <div>
+        <p *ngIf="universidadBuscada?.eliminacionLogica" class="mensaje-eliminacion">La universidad ha sido eliminada
+        </p>
+        <p class="mensaje-sancion" *ngIf="notificacionBuscada?.auditada">El usuario fue sancionado por un administrador
+        </p>
+    </div>
+</div>
+
+<div *ngIf="cargando" class="cargando">
+    <p>Cargando...</p>
+</div>
+
+<div *ngIf="carreraAgregada && !registroEliminado && !infraccion && !cargando" class="section carrera">
+    <h2 class="section-title">Nombre: {{ nuevaCarreraAgregada?.nombre }}</h2>
+    <p class="detail">Duración: {{ nuevaCarreraAgregada?.duracion }}</p>
+    <p class="detail">Grado: {{ nuevaCarreraAgregada?.grado }}</p>
+    <p class="usuario">Por: <span class="username">{{usuarioPropietario?.username}}</span></p>
+    <a [routerLink]="['/detalleUniversidad', nuevaCarreraAgregada?.universidadId]">Ir a la universidad</a>
+</div>
+
+<div *ngIf="carrera && !registroEliminado && !infraccion && !cargando" class="section carrera">
+    <h2 class="section-title">{{ nuevaCarreraAgregada?.nombre }}</h2>
+    <p class="detail">Duración: {{ nuevaCarreraAgregada?.duracion }}</p>
+    <p class="detail">Grado: {{ nuevaCarreraAgregada?.grado }}</p>
+    <p class="usuario">Por: <span class="username">{{usuarioPropietario?.username}}</span></p>
+    <p class="usuario-id">ID de Usuario: {{usuarioPropietario?.id}}</p>
+    <p [ngClass]="{'infracciones-altas': usuarioPropietario?.infracciones! == 3}">
+        Infracciones: {{usuarioPropietario?.infracciones}}
+    </p>
+    <div class="respuesta-actions">
+        <button [disabled]="nuevaCarreraAgregada?.eliminacionLogica" class="btn eliminar"
+            (click)="eliminarCarrera(nuevaCarreraAgregada?.id)">Eliminar</button>
+        <button [disabled]="notificacionBuscada?.auditada" class="btn eliminar-reportar"
+            (click)="infraccionarUsuario(usuarioPropietario?.id)">
+            {{ usuarioPropietario?.infracciones === 3 ? 'Banear usuario' : 'Infraccionar usuario' }}
+        </button>
+    </div>
+    <div>
+        <p *ngIf="notificacionBuscada?.auditada" class="mensaje-sancion">El usuario fue sancionado por un administrador
+        </p>
+        <p *ngIf="nuevaCarreraAgregada?.eliminacionLogica" class="mensaje-sancion">La carrera fue elinada</p>
+    </div>
+</div>
+
+
+<div *ngIf="respuestaComentarioRecibida && !registroEliminado  && !infraccion && !cargando" class="section respuesta">
+    <h2 class="section-title">Respuesta recibida</h2>
+    <div class="respuesta-container">
+        <p class="mensaje">{{respuestaComentario?.mensaje}}</p>
+        <div class="respuesta-details">
+            <p class="fecha">{{respuestaComentario?.fecha | date: 'medium'}}</p>
+            <p class="editado" *ngIf="respuestaComentario?.editado">(Editado)</p>
+            <p class="usuario">Por: <span class="username">{{respuestaComentario?.nickname}}</span></p>
+            <button class="btn btn-primary" style="margin-bottom: 20px;" (click)="verHilo(respuestaComentario?.id)">Ver
+                hilo</button>
+            <div *ngIf="comentarioHilo">
+                <app-comentario [comentarioHilo]="comentarioHilo"></app-comentario>
+            </div>
+            <!-- <p [ngClass]="{'infracciones-altas': usuarioPropietario?.infracciones! == 3}">
+                Infracciones: {{usuarioPropietario?.infracciones}}
+            </p>
+            <p class="usuario-id">ID de Usuario: {{respuestaComentario?.usuarioId}}</p> -->
+        </div>
+        <!-- <div class="respuesta-actions">
+            <button class="btn eliminar" (click)="eliminarRespuesta(respuestaComentario?.id)">Eliminar</button>
+            <button class="btn eliminar-reportar" (click)="infraccionarUsuario(usuarioPropietario?.id)">
+                {{ usuarioPropietario?.infracciones === 3 ? 'Banear usuario' : 'Infraccionar usuario' }}
+            </button>
+        </div> -->
+    </div>
+</div>
+
+<div *ngIf="respuestaAotraRespuesta && !registroEliminado  && !infraccion && !cargando" class="section respuesta">
+    <h2 class="section-title">Respuesta recibida</h2>
+    <div class="respuesta-container">
+        <p class="mensaje">{{respuestaAotraRespuesta?.mensaje}}</p>
+        <div class="respuesta-details">
+            <p class="fecha">{{respuestaAotraRespuesta?.fecha | date: 'medium'}}</p>
+            <p class="editado" *ngIf="respuestaAotraRespuesta?.editado">(Editado)</p>
+            <p class="usuario">Por: <span class="username">{{respuestaAotraRespuesta?.username}}</span></p>
+            <button class="btn btn-primary" style="margin-bottom: 20px;"
+                (click)="verHiloRespuesta(respuestaAotraRespuesta?.idComentarioPadre)">Ver hilo</button>
+            <div *ngIf="comentarioHilo">
+                <app-comentario [comentarioHilo]="comentarioHilo"></app-comentario>
+            </div>
+            <!-- <p [ngClass]="{'infracciones-altas': usuarioPropietario?.infracciones! == 3}">
+                Infracciones: {{usuarioPropietario?.infracciones}}
+            </p>
+            <p class="usuario-id">ID de Usuario: {{respuestaComentario?.usuarioId}}</p> -->
+        </div>
+        <!-- <div class="respuesta-actions">
+            <button class="btn eliminar" (click)="eliminarRespuesta(respuestaComentario?.id)">Eliminar</button>
+            <button class="btn eliminar-reportar" (click)="infraccionarUsuario(usuarioPropietario?.id)">
+                {{ usuarioPropietario?.infracciones === 3 ? 'Banear usuario' : 'Infraccionar usuario' }}
+            </button>
+        </div> -->
+    </div>
+</div>
+
+
+
+<div *ngIf="respuesta && !registroEliminado  && !infraccion && !cargando" class="section respuesta">
+    <h2 class="section-title">Respuesta</h2>
+    <div class="respuesta-container">
+        <p class="mensaje">{{respuestaBuscada?.mensaje}}</p>
+        <div class="respuesta-details">
+            <p class="fecha">{{respuestaBuscada?.fecha | date: 'medium'}}</p>
+            <p class="editado" *ngIf="respuestaBuscada?.editado">(Editado)</p>
+            <p class="usuario">Por: <span class="username">{{respuestaBuscada?.username}}</span></p>
+            <p [ngClass]="{'infracciones-altas': usuarioPropietario?.infracciones! == 3}">
+                Infracciones: {{usuarioPropietario?.infracciones}}
+            </p>
+            <p class="usuario-id">ID de Usuario: {{respuestaBuscada?.usuarioId}}</p>
+        </div>
+        <div class="respuesta-actions">
+            <button [disabled]="respuestaBuscada!.eliminado" class="btn eliminar"
+                (click)="eliminarRespuesta(respuestaBuscada?.id)">Eliminar</button>
+            <button [disabled]="notificacionBuscada?.auditada" class="btn eliminar-reportar"
+                (click)="infraccionarUsuario(usuarioPropietario?.id)">
+                {{ usuarioPropietario?.infracciones === 3 ? 'Banear usuario' : 'Infraccionar usuario' }}
+            </button>
+        </div>
+    </div>
+    <div>
+        <p *ngIf="notificacionBuscada?.auditada" class="mensaje-sancion">El usuario fue sancionado por un administrador
+        </p>
+        <p *ngIf="respuestaBuscada?.eliminado" class="mensaje-eliminacion">La carrera fue elinada</p>
+    </div>
+</div>
+
+<div *ngIf="permiso && !registroEliminado  && !infraccion && !cargando" class="section permiso">
+    <h2 class="section-title">Permiso</h2>
+    <p>{{ permisoBuscado?.nombrePermiso }}</p>
+    <div class="permiso-actions">
+        <button class="btn eliminar">Eliminar</button>
+        <button class="btn eliminar-reportar" (click)="infraccionarUsuario(usuarioPropietario?.id)">
+            {{ usuarioPropietario?.infracciones === 3 ? 'Banear usuario' : 'Infraccionar usuario' }}
+        </button>
+    </div>
+</div>
+
+<div *ngIf="comentario && !registroEliminado  && !infraccion && !cargando" class="section comentario">
+    <h2 class="section-title">Comentario</h2>
+    <div class="respuesta-container">
+        <p class="mensaje">{{comentarioAgregadoCarreraEntidad?.mensaje}}</p>
+        <div class="respuesta-details">
+            <p class="fecha">{{comentarioAgregadoCarreraEntidad?.fecha | date: 'medium'}}</p>
+            <p class="editado" *ngIf="comentarioAgregadoCarreraEntidad?.editado">(Editado)</p>
+            <p class="usuario">Por: <span class="username">{{comentarioAgregadoCarreraEntidad?.username}}</span></p>
+            <p class="usuario-id">ID de Usuario: {{comentarioAgregadoCarreraEntidad?.usuarioId}}</p>
+            <p [ngClass]="{'infracciones-altas': usuarioPropietario?.infracciones! == 3}">
+                Infracciones: {{usuarioPropietario?.infracciones}}
+            </p>
+        </div>
+        <div class="respuesta-actions">
+            <button [disabled]="comentarioAgregadoCarreraEntidad!.eliminado" class="btn eliminar"
+                (click)="eliminarComentario(comentarioAgregadoCarreraEntidad?.id)">Eliminar</button>
+            <button [disabled]="notificacionBuscada?.auditada" class="btn eliminar-reportar"
+                (click)="infraccionarUsuario(usuarioPropietario?.id)">
+                {{ usuarioPropietario?.infracciones === 3 ? 'Banear usuario' : 'Infraccionar usuario' }}
+            </button>
+        </div>
+    </div>
+    <div>
+        <p *ngIf="notificacionBuscada?.auditada" class="mensaje-sancion">El usuario fue sancionado por un administrador
+        </p>
+        <p *ngIf="comentarioAgregadoCarreraEntidad?.eliminado" class="mensaje-eliminacion">El comentario fue eliminado</p>
+    </div>
+</div>
+
+
+<div *ngIf="comentarioAgregadoCarrera && !registroEliminado  && !infraccion && !cargando" class="section comentario">
+    <h2 class="section-title">Comentario</h2>
+    <div class="respuesta-container">
+        <p class="mensaje">{{comentarioAgregadoCarreraEntidad?.mensaje}}</p>
+        <div class="respuesta-details">
+            <p class="fecha">{{comentarioAgregadoCarreraEntidad?.fecha | date: 'medium'}}</p>
+            <p class="editado" *ngIf="comentarioAgregadoCarreraEntidad?.editado">(Editado)</p>
+            <p class="usuario">Por: <span class="username">{{comentarioAgregadoCarreraEntidad?.username}}</span></p>
+            <!-- <p class="usuario-id">ID de Usuario: {{comentarioAgregadoCarreraEntidad?.usuarioId}}</p>
+            <p [ngClass]="{'infracciones-altas': usuarioPropietario?.infracciones! == 3}">
+                Infracciones: {{usuarioPropietario?.infracciones}}
+            </p>
+        </div>
+        <div class="respuesta-actions">
+            <button class="btn eliminar" (click)="eliminarComentario(comentarioAgregadoCarreraEntidad?.id)">Eliminar</button>
+            <button class="btn eliminar-reportar" (click)="infraccionarUsuario(usuarioPropietario?.id)">
+                {{ usuarioPropietario?.infracciones === 3 ? 'Banear usuario' : 'Infraccionar usuario' }}
+            </button>
+        </div> -->
+        </div>
+    </div>
+
+    <div *ngIf="usuario && !registroEliminado  && !infraccion && !cargando" class="section usuario">
+        <h2 class="section-title">Usuario</h2>
+        <p>{{ usuarioBuscado?.username }}</p>
+        <p [ngClass]="{'infracciones-altas': usuarioPropietario?.infracciones! == 3}">
+            Infracciones: {{usuarioPropietario?.infracciones}}
+        </p>
+        <!-- <div class="usuario-actions">
+        <button class="btn eliminar">Eliminar</button>
+        <button class="btn eliminar-reportar">Eliminar y Reportar</button>
+    </div> -->
+    </div>
+
+
+
+
+
+    <div class="mensaje-error" *ngIf="registroEliminado">
+        <p>El registro que buscas no existe o fue eliminado</p>
+    </div>
+
+    <div *ngIf="infraccion" class="div-infraccion">
+        <p class="p-infraccion">Se ha aplicado la infracción exitosamente</p>
+    </div>

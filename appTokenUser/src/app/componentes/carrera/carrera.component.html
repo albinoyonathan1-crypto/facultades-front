@@ -1,0 +1,45 @@
+<div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+    <div class="text-center mb-3" *ngIf="calificacionEsEditable; else notEditable">
+        <p style="margin-top: 10px; font-size: 24px; font-family: roboto; margin-bottom: 0px;">Calificar:
+            {{carrera.nombre}}</p>
+        <app-puntuacion [esEditable]="true" [idUsuario]="idUsuarioCalificacion" [idCalificacion]="idCalificacionEditar"
+            (calificacionGuardada)="handleCalificacionGuardada($event)"></app-puntuacion>
+    </div>
+    <ng-template #notEditable>
+        <p style="margin-top: 10px; font-size: 24px; font-family: roboto; margin-bottom: 0px;">Calificar:</p>
+        <app-puntuacion (calificacionGuardada)="handleCalificacionGuardada($event)"></app-puntuacion>
+    </ng-template>
+    <app-promedio-calificacion [listaCalificacion]="carrera.listaCalificacion!"></app-promedio-calificacion>
+</div>
+
+<div style=" text-align: center;">
+    <p style="cursor: pointer; color: green;" (click)="volverUniversidad()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-clockwise"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z" />
+            <path
+                d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466" />
+        </svg>
+    </p>
+</div>
+
+<app-comentario *ngIf="actualizarComentarios" [carrera]="carrera"></app-comentario>
+
+<div>
+    <div class="agregarComentario container">
+        <div class="cabecera mb-3">
+            <h2>Deja un comentario</h2>
+            <p>Conectado como: <span style="color: rgb(34, 56, 255);"> {{usuarioActual?.username}}</span></p>
+        </div>
+
+        <div class="mb-3">
+            <textarea id="texto_area" name="comentario" rows="5" class="form-control" [(ngModel)]="nuevoComentario"
+                placeholder="Escribe aquí..."></textarea>
+        </div>
+
+        <button class="btn btn-primary" [disabled]="nuevoComentario.trim() === ''"
+            (click)="crearNuevoComentario(nuevoComentario)">Enviar
+            comentario</button>
+    </div>
+</div>
+<!-- <input type="submit" (click)="editCarrera(1, 'unam 23')"> probar -->

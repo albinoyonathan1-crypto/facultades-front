@@ -1,0 +1,79 @@
+.universidad-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 20px;
+    /* Espaciado superior */
+}
+
+.universidad-container p {
+    font-size: 1.5rem;
+    /* Tamaño del texto */
+    font-weight: bold;
+    margin-bottom: 10px;
+    /* Espacio entre el texto y la imagen */
+    color: #333;
+    /* Color del texto */
+}
+
+.universidad-imagen {
+    max-width: 80%;
+    /* Ocupa un máximo del 80% del ancho de la pantalla */
+    height: auto;
+    /* Mantiene las proporciones de la imagen */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Sombra elegante */
+    margin-top: 10px;
+    /* Espaciado superior para la imagen */
+}
+
+.container {
+    padding: 16px;
+    border: 1px, solid #dbdbdb;
+    border-radius: 10px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+
+}
+
+.card {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 8px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.contenedor-carreras {
+    display: flex;
+    flex-direction: column;
+}
+
+.contenedor-carreras .titulo {
+    text-align: center;
+    font-size: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.contenedor-carreras .btn-agregar-carrera {
+    width: 150px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.nombre-carrera:hover {
+    cursor: pointer
+}

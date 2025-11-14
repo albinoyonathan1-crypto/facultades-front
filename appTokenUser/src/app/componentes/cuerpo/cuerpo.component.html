@@ -1,0 +1,95 @@
+<!-- Contenedor principal -->
+<div class="container">
+
+    <!-- Mensaje de error -->
+    <div *ngIf="mensajeError">
+        <app-errores [mensajeError]="mensajeError"></app-errores>
+    </div>
+
+    <!-- Barra de búsqueda -->
+    <div class="barra-busqueda-container">
+        <div class="barra-busqueda">
+            <app-barra-busqueda (universdiadEncontrada)="manejarUniversidadesEncontradas($event)"></app-barra-busqueda>
+        </div>
+    </div>
+
+    <!-- Botón de recarga -->
+    <div class="btn-recargar">
+        <button class="btn btn-primary" (click)="recargarUniversidades()">Recargar</button>
+    </div>
+
+    <!-- Alerta de universidad no encontrada -->
+    <div *ngIf="universidadNoEncontrada" class="alert alert-danger">
+        Universidad no encontrada
+    </div>
+
+    <!-- Lista de universidades -->
+    <div class="contenedor-universidades row">
+        <div class="col-md-4" *ngFor="let universidad of universidades">
+            <div class="card mb-4">
+                <!-- Imagen de la universidad -->
+                <img [src]="universidad.imagen" class="card-img-top" alt="Imagen de {{ universidad.nombre }}"
+                    (error)="manejarImagenNoCargada($event)" />
+
+                <!-- Información de la universidad -->
+                <div class="card-body">
+                    <h5 class="card-title">{{ universidad.nombre }}</h5>
+                    <div style="min-height: 80px;">
+                        <p  class="card-text">{{ universidad.descripcion }}</p>
+                    </div>
+                    <!-- Enlace al sitio web de la universidad -->
+                    <a [href]="universidad.direccionWeb" target="_blank" rel="noopener noreferrer" class="card-link">
+                        {{ universidad.direccionWeb }}
+                    </a>
+
+                    <!-- Dirección de la universidad -->
+                    <p class="card-text">{{ universidad.direccion }}</p>
+
+                    <!-- Calificación promedio -->
+                    <ng-container *ngIf="universidad.listaCalificacion">
+                        <app-promedio-calificacion
+                            [listaCalificacion]="universidad.listaCalificacion"></app-promedio-calificacion>
+                    </ng-container>
+
+                    <!-- Botones de acción -->
+                    <div class="btn-group" role="group">
+                        <a [routerLink]="['/detalleUniversidad', universidad.id]" class="btn btn-outline-primary">
+                            Ver
+                        </a>
+                        <a *ngIf="idUsuarioActual === universidad.usuarioId; else agregarCarrera"
+                            [routerLink]="['/edicionUniversidad', universidad.id]" class="btn btn-outline-secondary">
+                            Editar
+                        </a>
+                        <ng-template #agregarCarrera>
+                            <a [routerLink]="['/agregarCarrera', universidad.id]" class="btn btn-outline-secondary">
+                                Agregar carrera
+                            </a>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Paginación -->
+    <div class="pagination-container">
+        <ul class="pagination justify-content-center">
+            <!-- Botón anterior -->
+            <li class="page-item" [class.disabled]="paginaActual === 0">
+                <a class="page-link" (click)="cambiarPagina(paginaActual - 1)" aria-label="Anterior">&laquo;</a>
+            </li>
+
+            <!-- Números de página -->
+            <li class="page-item" *ngFor="let i of [].constructor(cantidadPaginas); let index = index">
+                <a class="page-link" (click)="cambiarPagina(index)" [class.active]="paginaActual === index">
+                    {{ index + 1 }}
+                </a>
+            </li>
+
+            <!-- Botón siguiente -->
+            <li class="page-item" [class.disabled]="paginaActual + 1 === cantidadPaginas">
+                <a class="page-link" (click)="cambiarPagina(paginaActual + 1)" aria-label="Siguiente">&raquo;</a>
+            </li>
+        </ul>
+    </div>
+</div>

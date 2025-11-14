@@ -1,0 +1,60 @@
+<div class="container">
+    <p class="alert alert-info text-center">
+        Si tienes alguna duda o problema, <strong>enviame un email</strong> y te estaré respondiendo apenas pueda.
+    </p>
+</div>
+
+
+<div class="container mt-5">
+    <div class="card shadow p-4">
+        <h2 class="text-center text-primary">Contacto</h2>
+        <form [formGroup]="contactoForm" (ngSubmit)="enviar()">
+
+            <!-- Email -->
+            <div class="mb-3">
+                <label for="email" class="form-label">Correo Electrónico</label>
+                <input type="email" id="email" class="form-control" formControlName="email"
+                    placeholder="Ingresa tu correo">
+                <div *ngIf="contactoForm.get('email')?.invalid && contactoForm.get('email')?.touched"
+                    class="text-danger">
+                    <small *ngIf="contactoForm.get('email')?.errors?.['required']">El correo es obligatorio.</small>
+                    <small *ngIf="contactoForm.get('email')?.errors?.['email']">El formato del correo es
+                        incorrecto.</small>
+                    <small *ngIf="contactoForm.get('email')?.errors?.['sinEspacios']">No se permiten espacios en
+                        blanco.</small>
+                </div>
+            </div>
+
+            <!-- Mensaje -->
+            <div class="mb-3">
+                <label for="mensaje" class="form-label">Mensaje</label>
+                <textarea id="mensaje" class="form-control" formControlName="mensaje" rows="4"
+                    placeholder="Escribe tu mensaje"></textarea>
+                <div *ngIf="contactoForm.get('mensaje')?.invalid && contactoForm.get('mensaje')?.touched"
+                    class="text-danger">
+                    <small *ngIf="contactoForm.get('mensaje')?.errors?.['required']">El mensaje es obligatorio.</small>
+                    <small *ngIf="contactoForm.get('mensaje')?.errors?.['sinEspacios']">No se permiten espacios en
+                        blanco.</small>
+                </div>
+            </div>
+
+            <!-- reCAPTCHA -->
+            <div class="recaptcha-container">
+                <re-captcha formControlName="recaptcha" siteKey="6LeO030qAAAAAPAwlhiEbIoIPbk2j7nYU6OkfsEF"
+                    (resolved)="onCaptchaResolved($event)">
+                </re-captcha>
+                <div class="error-message"
+                    *ngIf="contactoForm.get('recaptcha')?.touched && contactoForm.get('recaptcha')?.invalid">
+                    <small *ngIf="contactoForm.get('recaptcha')?.errors?.['required']">Debes verificar que no eres un
+                        robot.</small>
+                </div>
+            </div>
+
+            <!-- Botón de Enviar -->
+            <button type="submit" class="btn btn-primary w-100" [disabled]="cargando">
+                <span *ngIf="!cargando">Enviar Mensaje</span>
+                <span *ngIf="cargando"><i class="fa fa-spinner fa-spin"></i> Enviando...</span>
+            </button>
+        </form>
+    </div>
+</div>

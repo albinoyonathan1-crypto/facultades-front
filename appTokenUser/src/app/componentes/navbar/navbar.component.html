@@ -1,0 +1,56 @@
+<div  class="container navbar">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary ">
+    <div class="container-fluid ">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse contenedor-rutas" id="navbarText">
+        <ul  style="margin: auto;"   class="navbar-nav rutas">
+          <li class="nav-item">
+            <a (click)="seleccionar('home')" [ngClass]="{ 'seleccionado': rutaSeleccionada === 'home'}"
+              aria-current="page" routerLink="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a (click)="seleccionar('contacto')" [ngClass]="{ 'seleccionado': rutaSeleccionada === 'contacto'}"
+              routerLink="/contacto">Contacto</a>
+          </li>
+          <li *ngIf="!loguado" class="nav-item">
+            <a (click)="seleccionar('loguin')" [ngClass]="{ 'seleccionado': rutaSeleccionada === 'loguin'}"
+              routerLink="/loguin">Loguin</a>
+          </li>
+          <li *ngIf="!loguado" class="nav-item">
+            <a (click)="seleccionar('registro')" [ngClass]="{ 'seleccionado': rutaSeleccionada === 'registro'}"
+              routerLink="/registro">Registro</a>
+          </li>
+          <li class="nav-item">
+            <a (click)="seleccionar('notificaciones')"
+              [ngClass]="{ 'seleccionado': rutaSeleccionada === 'notificaciones'}" *ngIf="loguado"
+              routerLink="/notificaciones">Notificaciones</a>
+          </li>
+          <span class="navbar-text">
+            <app-esucha-socket></app-esucha-socket>
+          </span>
+          <li class="nav-item">
+            <a (click)="seleccionar('agregarUniversidad')"
+              [ngClass]="{ 'seleccionado': rutaSeleccionada === 'agregarUniversidad'}" *ngIf="loguado"
+              routerLink="/agregarUniversidad">Agregar universidad</a>
+          </li>
+          <li *ngIf="loguado" class="nav-item">
+            <a (click)="seleccionar('perfil')" [ngClass]="{ 'seleccionado': rutaSeleccionada === 'perfil'}"
+              routerLink="/perfil">Perfil</a>
+          </li>
+          <li *ngIf="loguado" class="nav-item">
+            <a (click)="seleccionar('normas')" [ngClass]="{ 'seleccionado': rutaSeleccionada === 'normas'}"
+              routerLink="/normas">Normas</a>
+          </li>
+          <li *ngIf="loguado" class="nav-item">
+            <a (click)="seleccionar('salir')" [ngClass]="{ 'seleccionado': rutaSeleccionada === 'salir'}" href="#"
+              (click)="salir()">Salir</a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+</div>

@@ -1,0 +1,136 @@
+/* mi-componente.component.css */
+/* :host {
+    display: block; /* Asegúrate de que el componente ocupe el espacio completo 
+    background-color: #8b8b8b;  
+    width: 100%;
+    height: 100vh;
+  } */
+  
+  .informativo-texto{
+
+  }
+
+  .informativo{
+    border: 1px solid #e6e6e6;
+    border-radius: 5px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    width: 70%;
+    margin: auto;
+    margin-top: 50px;
+  }
+
+  .informativo .informativo-texto p {
+    font-size: 18px;
+  }
+
+  .container .informativo .informativo-imagen {
+   text-align: center;
+  }
+
+  .container .topUniversidadCarrera{
+    margin-top: 50px;
+    border: 1px solid;
+    text-align: center;
+  }
+
+  /* Estilo para el enlace de agregar universidad */
+.link-agregar {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.link-agregar:hover {
+  text-decoration: underline;
+}
+
+/* Estilo para el mensaje cuando no está logueado */
+.mensaje-no-logueado {
+  font-size: 14px;
+  color: #ff4d4d;
+}
+
+
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* Ajustes generales para pantallas pequeñas */
+@media (max-width: 1024px) {
+  .informativo {
+      flex-direction: column;
+      text-align: center;
+  }
+
+  .informativo-texto {
+      width: 100%;
+      padding: 20px;
+  }
+
+  .informativo-imagen {
+      display: flex;
+      justify-content: center;
+  }
+
+  .informativo-imagen img {
+      width: 80%;
+  }
+
+  .top-section {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  app-top-universidad, app-top-carrera {
+      width: 100%;
+      margin-bottom: 20px;
+  }
+}
+
+/* Ajustes para pantallas medianas */
+@media (max-width: 768px) {
+  .container {
+      width: 95%;
+  }
+
+  .informativo-texto p {
+      font-size: 14px;
+  }
+
+  .informativo-imagen img {
+      width: 90%;
+  }
+
+  .top-section {
+      flex-direction: column;
+  }
+}
+
+/* Ajustes para móviles */
+@media (max-width: 480px) {
+  .container {
+      width: 100%;
+      padding: 10px;
+  }
+
+  .informativo {
+      flex-direction: column;
+  }
+
+  .informativo-texto p {
+      font-size: 12px;
+  }
+
+  .informativo-imagen img {
+      width: 100%;
+  }
+
+  .top-section {
+      flex-direction: column;
+      align-items: center;
+  }
+}

@@ -1,0 +1,29 @@
+<div class="barra-lateral">
+  <p style="text-align: center; font-size: 24px; font-weight: bold; color: #4CAF50; margin-bottom: 20px;">
+    Chat
+  </p>
+
+  <img width="90%" src="assets/imagenes/undraw_quick-chat_3gj8.svg" alt="Ilustración web relacionada"
+    style="display: block; margin: 0 auto; max-width: 600px; height: auto; border-radius: 10px; margin-bottom: 10px;" />
+
+  <div *ngFor="let usuarioRecord of listausuariosOnline" class="usuario-item"
+    (click)="capturarIdUsuario(usuarioRecord.id!, usuarioRecord.online!)">
+    <div class="usuario-contenedor"
+      [ngClass]="{'notificacion': verificarNotificacion(usuarioRecord.idsUsuariosNotificar!)}">
+      <span class="usuario-icon" [ngClass]="{'online': usuarioRecord.online, 'offline': !usuarioRecord.online}"></span>
+      <img class="imagen-usuario"
+        [src]="usuarioRecord.imagenUsuario ?? 'https://e7.pngegg.com/pngimages/722/101/png-clipart-computer-icons-user-profile-circle-abstract-miscellaneous-rim.png'">
+      <span class="usuario-nick">{{usuarioRecord.nick}}</span>
+    </div>
+  </div>
+</div>
+
+<!-- Mostrar el ChatBox al lado de la barra lateral -->
+<div *ngIf="usuarioChat" class="chat-box-container">
+  <app-chat-box [usuario]="usuarioChat" [online]="online"></app-chat-box>
+</div>
+
+<div>
+  <app-chat-general></app-chat-general>
+</div>
+

@@ -1,0 +1,47 @@
+<h2 class="titulo">Top Universidades</h2>
+
+<!-- Tabla para mostrar las universidades mejor calificadas -->
+<table class="table table-bordered">
+
+    <thead>
+        <tr>
+          <th scope="col">Posición</th>
+          <th scope="col">Nombre de la Universidad</th>
+          <th scope="col">Calificación</th>
+        </tr>
+      </thead>
+
+  <tbody>
+    <tr *ngFor="let universidad of listaTopUniversidades; let i = index">
+      <!-- Mostramos el índice ajustado por la cantidad de universidades cargadas -->
+      <th scope="row">{{ i + 1 + (pagina * registrosPorPagina) }}</th>
+
+      <!-- Columna con el nombre de la universidad -->
+      <td style="height: 200px;">
+        <a [routerLink]="['/detalleUniversidad', universidad.id]" class="enlace-universidad">
+          {{ universidad.nombre }}
+        </a>
+      </td>
+
+      <!-- Columna con la lista de calificaciones (si existen) -->
+      <td>
+        <p *ngIf="universidad.listaCalificacion && universidad.listaCalificacion.length > 0">
+          <app-promedio-calificacion [listaCalificacion]="universidad.listaCalificacion"></app-promedio-calificacion>
+        </p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Mostrar el mensaje de error si existe -->
+<div *ngIf="mensajeError" class="error-container">
+  <app-errores [mensajeError]="mensajeError"></app-errores>
+</div>
+
+<!-- Botones de paginación -->
+<div class="pagination-container">
+  <button class="btn" (click)="cargarMenosUniversidades()" [disabled]="pagina === 0">Anterior</button>
+  <button class="btn" (click)="cargarMasUniversidades()" [disabled]="listaTopUniversidades.length < registrosPorPagina">
+    Siguiente
+  </button>
+</div>

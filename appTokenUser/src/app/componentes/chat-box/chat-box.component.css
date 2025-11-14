@@ -1,0 +1,128 @@
+.chat-box-container {
+    position: fixed;
+    bottom: 20px;
+    right: 590px;  
+    width: 300px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Estilo cuando el chat está minimizado */
+.chat-box-container.minimizado {
+    height: 50px;
+    overflow: hidden;
+    padding: 10px;
+}
+
+/* Encabezado del ChatBox */
+.chat-box-header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-weight: bold;
+    padding: 10px;
+    background: #f3f3f3;
+    border-radius: 10px 10px 0 0;
+}
+
+/* Botón de minimizar */
+.chat-box-header button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.chat-box-messages {
+    flex-grow: 1;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.chat-box-input {
+    display: flex;
+    gap: 10px;
+}
+
+.chat-box-input input {
+    flex-grow: 1;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.chat-box-input button {
+    padding: 8px 15px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.usuario-icon {
+    width: 20px;  /* Icono más grande */
+    height: 20px;  /* Icono más grande */
+    border-radius: 50%;
+    margin-right: 15px;  /* Separación mayor para que no esté tan pegado */
+    border: 3px solid white;  /* Bordes más gruesos para mejorar el contraste */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra más marcada para mejor visibilidad */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;  /* Animación para transición */
+}
+
+/* Icono en línea */
+.usuario-icon.online {
+    background-color: #28a745;  /* Verde brillante para mayor visibilidad */
+    box-shadow: 0 0 10px rgba(40, 167, 69, 0.8); /* Sombra verde más intensa */
+}
+
+/* Icono fuera de línea */
+.usuario-icon.offline {
+    background-color: #969696;  /* Gris para indicar que está desconectado */
+}
+
+.chat-box-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.message {
+    max-width: 70%;
+    padding: 10px;
+    border-radius: 10px;
+    word-wrap: break-word;
+}
+
+/* Mensaje enviado por el usuario actual */
+.sent {
+    background-color: #007bff;
+    color: white;
+    align-self: flex-end;
+    border-radius: 10px 10px 0 10px;
+}
+
+/* Mensaje recibido de otro usuario */
+.received {
+    background-color: #f1f0f0;
+    color: black;
+    align-self: flex-start;
+    border-radius: 10px 10px 10px 0;
+}
+
+.message p:first-child {
+    font-size: 12px; /* Tamaño pequeño para la fecha */
+    color: #888; /* Gris claro para la fecha */
+    text-align: right; /* Alineación a la derecha */
+    margin-bottom: 5px; /* Separación con el contenido del mensaje */
+}
+
+
+

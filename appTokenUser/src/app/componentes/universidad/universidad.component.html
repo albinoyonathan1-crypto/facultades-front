@@ -1,0 +1,7 @@
+<p>universidad works!</p>
+
+<div *ngIf="mensajeError">
+    <app-errores [mensajeError]="mensajeError"></app-errores>
+</div>
+
+<input type="submit" (click)="editarUniversidad(1, 'pepe')">probar

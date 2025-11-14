@@ -1,0 +1,33 @@
+<h1>Recuperar contraseña</h1>
+<p>Ingresa tu email para comenzar con el proceso de recuperación</p>
+
+<!-- Indicador de carga -->
+<!-- Pantalla de carga -->
+<div *ngIf="cargando" class="loading-message">
+  <p style="color:#007bff;">Cargando...</p>
+</div>
+
+<!-- Mensaje de error -->
+<div *ngIf="error" class="message error">
+  <p>Sucedió un error al procesar tu solicitud. Por favor, intenta nuevamente.</p>
+</div>
+
+<!-- Mensaje de éxito -->
+<div *ngIf="exito" class="message exito">
+  <p>El email de recuperación se te ha enviado exitosamente.</p>
+</div>
+
+<!-- Formulario -->
+<form *ngIf="!cargando && !error && !exito" [formGroup]="emailForm" (ngSubmit)="enviar()">
+  <div>
+    <label for="email">Email:</label>
+    <input id="email" type="email" formControlName="email" placeholder="Ingresa tu email">
+  </div>
+
+  <div *ngIf="emailForm.controls['email'].invalid && emailForm.controls['email'].touched">
+    <small *ngIf="emailForm.controls['email'].errors?.['required']">Este campo es obligatorio.</small>
+    <small *ngIf="emailForm.controls['email'].errors?.['email']">El email no es válido.</small>
+  </div>
+
+  <button type="submit" [disabled]="emailForm.invalid">Enviar</button>
+</form>

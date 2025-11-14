@@ -1,0 +1,106 @@
+<div *ngIf="universidad">
+    <div class="titulo text-center my-4">
+        <h1>{{ universidad.nombre }}</h1>
+    </div>
+
+    <div class="row cabezera-descripcion align-items-center mb-4">
+        <div class="imagen-repetida" [style.backgroundImage]="'url(' + universidad.imagen + ')'"></div>
+
+        <div class="col-md-8"
+            style="margin: auto; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <div style="margin-top: 20px;">
+                <button (click)="mostrarInfoPuntuacion()" class="btn-ver-puntuacion">Ver puntuación</button>
+            </div>
+
+            <div *ngIf="infoPuntuacion">
+                <div class="text-center mb-3" *ngIf="calificacionEsEditable; else notEditable">
+                    <p style="margin-top: 10px; font-size: 24px; font-family: roboto; margin-bottom: 0px; text-align: center;">Calificar:
+                    </p>
+                    <app-puntuacion  [esEditable]="true" [idUsuario]="idUsuarioCalificacion"
+                        [idCalificacion]="idCalificacionEditar"
+                        (calificacionGuardada)="handleCalificacionGuardada($event)"></app-puntuacion>
+                </div>
+                <ng-template #notEditable>
+                    <p style="margin-top: 10px; font-size: 24px; font-family: roboto; margin-bottom: 0px; text-align: center;">Calificar:
+                    </p>
+                    <app-puntuacion (calificacionGuardada)="handleCalificacionGuardada($event)"></app-puntuacion>
+                </ng-template>
+
+                <p *ngIf="universidad.listaCalificacion && universidad.listaCalificacion.length > 0"
+                    class="text-center">
+                    <span >
+                        <app-promedio-calificacion 
+                            [listaCalificacion]="universidad.listaCalificacion"></app-promedio-calificacion>
+                    </span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div
+        style="border: 2px solid rgb(235, 232, 232); padding: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 90%; margin: auto; border-radius: 5px; margin-bottom: 50px;">
+        <p
+            style="font-family: Roboto ; font-weight: 400;  font-style: normal; font-size: 24px; text-decoration: underline;">
+            Opinión del autor</p>
+        <div class="descripcion-universidad container mb-4">
+            <p style="text-align: center">{{ universidad.descripcion }}</p>
+        </div>
+    </div>
+
+    <div class="container contenedor-global">
+        <div class="contenedor-cabecera mb-4">
+            <div class="datos-basicos">
+                <h2>Info <button style="border: none; background-color: transparent; cursor: pointer;"
+                        (click)="mostrarInfo()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                            class="bi bi-arrow-bar-down" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M1 3.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5M8 6a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 .708-.708L7.5 12.293V6.5A.5.5 0 0 1 8 6" />
+                        </svg>
+                    </button>
+                </h2>
+                <div *ngIf="mostrarInfoBasica">
+                    <p>
+                        Sitio web:
+                        <a [href]="universidad.direccionWeb" target="_blank">{{ universidad.direccionWeb }}</a>
+                    </p>
+                    <p>Dirección: {{ universidad.direccion }}</p>
+                </div>
+            </div>
+
+            <div class="contenedor-carreras">
+                <h1 class="titulo">Carreras</h1>
+                <div class="grid">
+                    <button class="card" *ngFor="let carrera of universidad.listaCarreras"
+                        (click)="mostrarDatosCarrera(carrera.id!)">
+                        <h4>{{ carrera.nombre }}</h4>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Componente de carrera -->
+        <app-carrera *ngIf="mostrarCarreraComponent" [carrera]="carreraDeCarreraComponent"></app-carrera>
+
+        <!-- Comentarios y campo de agregar comentario -->
+        <div *ngIf="!mostrarCarreraComponent">
+            <app-comentario *ngIf="universidad.listaComentarios && recargaComponenteComentario"
+                [Universidad]="universidad"></app-comentario>
+
+            <div class="agregarComentario container">
+                <div class="cabecera mb-3">
+                    <h2>Deja un comentario</h2>
+                    <p>Conectado como: <span style="color: rgb(34, 56, 255);"> {{usuarioActual?.username}}</span></p>
+                </div>
+
+                <div class="mb-3">
+                    <textarea id="texto_area" name="comentario" rows="5" class="form-control"
+                        [(ngModel)]="nuevoComentario" placeholder="Escribe aquí..."></textarea>
+                </div>
+
+                <button class="btn btn-primary" [disabled]="nuevoComentario.trim() === ''"
+                    (click)="crearNuevoComentario(nuevoComentario)">Enviar
+                    comentario</button>
+            </div>
+        </div>
+    </div>
+</div>

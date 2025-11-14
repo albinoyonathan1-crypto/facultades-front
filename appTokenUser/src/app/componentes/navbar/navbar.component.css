@@ -1,0 +1,98 @@
+/* Estilo base para el navbar */
+.navbar {
+  display: flex;
+  background-color: #F8F9FA;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.rutas {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  gap: 15px;
+  /* Permite que los elementos se envuelvan en una nueva línea si no caben */
+}
+
+.seleccionado {
+  color: #007bff;
+}
+
+/* Estilo para los enlaces del navbar */
+a {
+  font-size: 18px;
+  /* Tamaño de fuente de los enlaces */
+  color: #333333;
+  /* Color oscuro para los enlaces */
+  text-decoration: none;
+  /* Eliminar subrayado */
+  transition: color 0.3s ease, padding 0.3s ease;
+}
+
+/* Estilo de los enlaces cuando el mouse pasa por encima */
+.navbar-nav .nav-link:hover {
+  color: #007bff;
+  /* Cambiar a azul cuando se pasa el mouse */
+  padding-left: 5px;
+  /* Desplazamiento para efecto visual */
+}
+
+/* Estilo de los elementos de la navbar */
+.navbar-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+/* Espaciado entre los elementos */
+.nav-item {
+  margin: 0 15px;
+  /* Espaciado entre los elementos */
+}
+
+/* Alinear el icono del navbar-toggler */
+.navbar-toggler {
+  border-color: #007bff;
+  /* Color del borde del botón de menú */
+}
+
+.navbar-toggler-icon {
+  background-color: #007bff;
+  /* Color del icono de menú */
+}
+
+/* Estilo para el texto dentro de la navbar */
+.navbar-text {
+  font-size: 14px;
+  color: #333333;
+  padding-left: 15px;
+}
+
+/* Estilo para el formulario de búsqueda o componentes adicionales */
+.navbar .navbar-collapse {
+  display: flex;
+  justify-content: flex-end;
+  /* Alinear elementos al final en pantallas grandes */
+}
+
+.navbar .navbar-collapse a {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+/* Responsividad para pantallas pequeñas */
+@media (max-width: 767px) {
+  .navbar-expand-lg .navbar-nav {
+    flex-direction: column;
+    /* En pantallas pequeñas, los elementos se alinean verticalmente */
+  }
+
+  .navbar-collapse {
+    justify-content: center;
+  }
+}

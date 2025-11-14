@@ -1,0 +1,78 @@
+<div class="edicion-universidad">
+  <h2>Editar Universidad</h2>
+  <form [formGroup]="universidadForm" (ngSubmit)="onSubmit()" class="form-container">
+    <div class="form-group">
+      <label for="nombre">Nombre</label>
+      <input id="nombre" type="text" formControlName="nombre" class="form-control"
+        placeholder="Nombre de la universidad" />
+      <div *ngIf="universidadForm.get('nombre')?.invalid && universidadForm.get('nombre')?.touched" class="error">
+        El nombre es obligatorio y debe tener al menos 4 caracteres.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="descripcion">Descripción</label>
+      <textarea id="descripcion" formControlName="descripcion" class="form-control" placeholder="Descripción detallada"
+        rows="4"></textarea>
+      <div *ngIf="universidadForm.get('descripcion')?.invalid && universidadForm.get('descripcion')?.touched"
+        class="error">
+        La descripción es obligatoria y debe tener al menos 40 caracteres.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="direccion">Dirección</label>
+      <input id="direccion" type="text" formControlName="direccion" class="form-control" placeholder="Dirección" />
+      <div *ngIf="universidadForm.get('direccion')?.invalid && universidadForm.get('direccion')?.touched" class="error">
+        La dirección es obligatoria y debe tener al menos 10 caracteres.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="imagen">URL de la Imagen</label>
+      <input id="imagen" type="text" formControlName="imagen" class="form-control" placeholder="URL de la imagen" />
+      <div *ngIf="universidadForm.get('imagen')?.invalid && universidadForm.get('imagen')?.touched" class="error">
+        La imagen es obligatoria.
+      </div>
+      <img *ngIf="universidadForm.get('imagen')?.value" [src]="universidadForm.get('imagen')?.value"
+        alt="Vista previa de la imagen" class="img-thumbnail" />
+    </div>
+
+    <div class="form-group">
+      <label for="direccionWeb">Página Web</label>
+      <input id="direccionWeb" type="text" formControlName="direccionWeb" class="form-control"
+        placeholder="https://www.ejemplo.com" />
+      <div *ngIf="universidadForm.get('direccionWeb')?.invalid && universidadForm.get('direccionWeb')?.touched"
+        class="error">
+        La dirección web es obligatoria y debe ser válida.
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="universidadForm.invalid">Guardar Cambios</button>
+    <button type="button" class="btn-eliminar" (click)="eliminarUniversidad()">Eliminar universidad</button>
+
+  </form>
+</div>
+
+<div class="carreras">
+  <app-agregacion-carrera [universidad]="universidadBuscada"></app-agregacion-carrera>
+
+  <div class="eliminar-carrera" >
+    <button (click)="habilitarEliminacion()" class="btn-eliminar">Eliminar carrera</button>
+
+    <div *ngIf="eliminar" class="select-container">
+      <label for="carrera" class="select-label">Selecciona una carrera:</label>
+      <select id="carrera" class="select-dropdown" (change)="onCarreraChange($event)">
+        <!-- Opción vacía -->
+        <option value="" disabled selected>Seleccione una carrera</option>
+        <!-- Opciones dinámicas -->
+        <option *ngFor="let carrera of universidadBuscada?.listaCarreras" [value]="carrera.id">
+          {{ carrera.nombre }}
+        </option>
+      </select>
+      
+
+      <button class="btn-eliminar" (click)="eliminarCarrera()">Eliminar</button>
+    </div>
+
+  </div>

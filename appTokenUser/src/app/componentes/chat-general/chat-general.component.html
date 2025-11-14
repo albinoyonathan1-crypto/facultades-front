@@ -1,0 +1,40 @@
+<div class="chat-general-container">
+
+    <div>
+        <p style="text-align: center; font-size: 16px; font-weight: bold; color: #4CAF50;">Chat general</p>
+    </div>
+
+    <div class="chat-box-header">
+        <button (click)="toggleMinimizarChat()">
+            {{ chatMinimizado ? '🔼' : '🔽' }}
+        </button>
+    </div>
+
+    <div *ngIf="!chatMinimizado" class="chat-box-messages">
+        <div *ngFor="let mensaje of listaMensajes; trackBy: trackByNick">
+            <div class="mensaje-container">
+                <span class="nick-user" [ngStyle]="{ 'color': obtenerColorHtml(mensaje.nickUser!)}">
+                    {{ mensaje.nickUser }}:
+                </span>
+                <span class="mensaje-text" [ngStyle]="{ 'color': obtenerColorHtml(mensaje.nickUser!)}">
+                    {{ mensaje.mensaje }}
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="chat-box-input" *ngIf="!chatMinimizado">
+        <input type="text" placeholder="Enviar mensaje..." [(ngModel)]="nuevoMensaje"
+            (keydown)="descontarCaracteres(this.nuevoMensaje, $event)" maxlength="250">
+        <button [attr.disabled]="nuevoMensaje.trim() === '' ? true : null" (click)="enviarMensaje()">Enviar
+            mensaje</button>
+    </div>
+    
+    <p [attr.hidden]="nuevoMensaje.trim() === '' ? true : null">{{caracteresPermitidos}}</p>
+
+    <div style="color: red;" *ngIf="mensajeExtenso">
+        El mensaje es muy extenso.
+    </div>
+
+
+</div>

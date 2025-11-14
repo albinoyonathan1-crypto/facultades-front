@@ -1,0 +1,9 @@
+<div class="container contenedor-formulario">
+    <div class="barraBusqueda">
+        <input type="text" name="" id="" placeholder="Ingresa el nombre de la institución"
+            [(ngModel)]="nombreUniversidad" class="form-control barra-busqueda">
+        <input type="submit" value="Buscar" class="btn btn-primary boton-busqueda"
+            [disabled]="!nombreUniversidad || nombreUniversidad.trim() === ''"
+            (click)="buscarUniversidadPorNombre(nombreUniversidad)">
+    </div>
+</div>

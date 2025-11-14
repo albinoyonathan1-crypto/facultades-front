@@ -1,0 +1,374 @@
+/* Estilo para los botones primarios */
+.btn-primary {
+    background-color: #007bff;
+    /* Color de fondo azul */
+    border-color: #007bff;
+    /* Color del borde */
+    color: #fff;
+    /* Color del texto */
+    padding: 10px 20px;
+    /* Espaciado interno */
+    border-radius: 5px;
+    /* Bordes redondeados */
+    transition: background-color 0.3s;
+    /* Efecto de transición */
+}
+
+/* Efecto hover para botones primarios */
+.btn-primary:hover {
+    background-color: #0056b3;
+    /* Color de fondo más oscuro al pasar el mouse */
+    border-color: #0056b3;
+    /* Color del borde más oscuro */
+}
+
+/* Estilo para botones secundarios */
+.btn-secondary {
+    background-color: #6c757d;
+    /* Color de fondo gris */
+    border-color: #6c757d;
+    /* Color del borde */
+    color: #fff;
+    /* Color del texto */
+    padding: 10px 20px;
+    /* Espaciado interno */
+    border-radius: 5px;
+    /* Bordes redondeados */
+    transition: background-color 0.3s;
+    /* Efecto de transición */
+}
+
+/* Efecto hover para botones secundarios */
+.btn-secondary:hover {
+    background-color: #5a6268;
+    /* Color de fondo más oscuro al pasar el mouse */
+    border-color: #545b62;
+    /* Color del borde más oscuro */
+}
+
+/* Estilo para etiquetas de entrada */
+.label {
+    font-weight: bold;
+    /* Negrita */
+    margin-bottom: 5px;
+    /* Espacio debajo de la etiqueta */
+    display: block;
+    /* Que cada etiqueta ocupe una línea completa */
+}
+
+/* Estilo para los campos de entrada de texto */
+.input-text {
+    width: 100%;
+    /* Ancho completo */
+    padding: 10px;
+    /* Espaciado interno */
+    border: 1px solid #ced4da;
+    /* Borde ligero */
+    border-radius: 5px;
+    /* Bordes redondeados */
+    margin-bottom: 15px;
+    /* Espacio inferior */
+}
+
+/* Estilo para los selectores */
+.select {
+    width: 100%;
+    /* Ancho completo */
+    padding: 10px;
+    /* Espaciado interno */
+    border: 1px solid #ced4da;
+    /* Borde ligero */
+    border-radius: 5px;
+    /* Bordes redondeados */
+    margin-bottom: 15px;
+    /* Espacio inferior */
+}
+
+/* Estilo para áreas de texto */
+.textarea {
+    width: 100%;
+    /* Ancho completo */
+    padding: 10px;
+    /* Espaciado interno */
+    border: 1px solid #ced4da;
+    /* Borde ligero */
+    border-radius: 5px;
+    /* Bordes redondeados */
+    margin-bottom: 15px;
+    /* Espacio inferior */
+}
+
+/* Estilo para los mensajes de error */
+.error-message {
+    color: #dc3545;
+    /* Color rojo para mensajes de error */
+    margin-top: -10px;
+    /* Espacio negativo para acercar el mensaje al campo */
+    margin-bottom: 10px;
+    /* Espacio debajo del mensaje */
+}
+
+/* Estilo para el contenedor de secciones */
+.section-container {
+    margin-bottom: 30px;
+    /* Espacio entre secciones */
+}
+
+/* Estilo para los iconos de entrada */
+.input-icon {
+    position: relative;
+    /* Posicionamiento relativo para el icono */
+}
+
+/* Estilo para el icono dentro del campo de entrada */
+.input-icon input {
+    padding-left: 30px;
+    /* Espacio a la izquierda para el icono */
+}
+
+/* Estilo para el icono */
+.input-icon .icon {
+    position: absolute;
+    /* Posicionamiento absoluto para el icono */
+    left: 10px;
+    /* Espacio desde la izquierda */
+    top: 50%;
+    /* Centrar verticalmente */
+    transform: translateY(-50%);
+    /* Ajustar verticalmente al centro */
+    color: #999;
+    /* Color del icono */
+}
+
+.btn-buscar {
+    background-color: transparent;
+    border: none;
+    margin: 0px;
+    cursor: pointer;
+}
+
+.contenedor-advertencia {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    max-width: 300px;
+    /* Limita el ancho para que no ocupe mucho espacio */
+    margin: 0 auto;
+    /* Centra la tarjeta */
+    border: 1px solid #ddd;
+    /* Agrega un borde sutil */
+    border-radius: 10px;
+    /* Bordes redondeados */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Sombra ligera */
+    overflow: hidden;
+    /* Asegura que el contenido no sobresalga */
+    transition: transform 0.2s, box-shadow 0.2s;
+    /* Animaciones suaves */
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    /* Sutil efecto de elevación al pasar el cursor */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+    /* Sombra más destacada */
+}
+
+.card-img-top {
+    max-height: 150px;
+    /* Controla la altura de la imagen */
+    object-fit: cover;
+    /* Asegura que la imagen se recorte sin deformarse */
+}
+
+.card-body {
+    padding: 15px;
+    /* Ajusta el espaciado interno */
+    font-family: 'Arial', sans-serif;
+    /* Fuente limpia */
+}
+
+.card-title {
+    font-size: 1.2rem;
+    /* Tamaño adecuado para el título */
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    font-size: 0.9rem;
+    /* Fuente más pequeña para el texto */
+    color: #555;
+    /* Color de texto sutil */
+    margin-bottom: 10px;
+}
+
+.card-link {
+    font-size: 0.85rem;
+    /* Fuente más pequeña para el enlace */
+    color: #007bff;
+    /* Color azul para enlaces */
+    text-decoration: none;
+}
+
+.card-link:hover {
+    text-decoration: underline;
+    /* Subrayado al pasar el cursor */
+}
+
+.btn-group .btn {
+    font-size: 0.85rem;
+    /* Botones compactos */
+    padding: 5px 10px;
+    margin-right: 5px;
+}
+
+
+.card-body .card-text {
+    font-size: 0.95rem;
+    color: #555;
+    display: -webkit-box;
+    /* Habilita el modo de diseño flexible para WebKit */
+    -webkit-line-clamp: 3;
+    /* Número máximo de líneas visibles */
+    -webkit-box-orient: vertical;
+    /* Configura la orientación en vertical */
+    overflow: hidden;
+    /* Oculta el contenido que se desborda */
+    text-overflow: ellipsis;
+    /* Muestra puntos suspensivos (...) */
+    word-wrap: break-word;
+    /* Permite que las palabras se dividan si son demasiado largas */
+    white-space: normal;
+    /* Permite los saltos de línea */
+}
+
+.imagenUniversidad {
+    text-align: center;
+    max-width: 400px;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.campoNombre{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.botones-avance{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 16px;
+}
+
+
+/* Pantallas grandes pero más pequeñas que un desktop normal */
+@media (max-width: 1200px) {
+    .contenedorGlobal {
+        width: 90%;
+    }
+
+    .campoNombre input {
+        width: 80%;
+    }
+
+    .imagenUniversidad {
+        width: 60%;
+    }
+}
+
+/* Tablets y laptops pequeñas */
+@media (max-width: 992px) {
+    .contenedorGlobal {
+        width: 95%;
+    }
+
+    .campoNombre input {
+        width: 90%;
+    }
+
+    .imagenUniversidad {
+        width: 70%;
+    }
+
+    .titulo h1 {
+        font-size: 22px;
+    }
+
+    .botones-avance {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .botones-avance button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+/* Tablets y móviles grandes */
+@media (max-width: 768px) {
+    .contenedorHijo {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .campoNombre input {
+        width: 100%;
+    }
+
+    .imagenUniversidad {
+        width: 80%;
+    }
+
+    .botones-avance button {
+        width: 100%;
+    }
+
+    .titulo h1 {
+        font-size: 20px;
+    }
+}
+
+/* Móviles pequeños */
+@media (max-width: 576px) {
+    .contenedorGlobal {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .campoNombre input {
+        width: 100%;
+    }
+
+    .imagenUniversidad {
+        width: 100%;
+    }
+
+    .botones-avance {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .botones-avance button {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .titulo h1 {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .alert {
+        font-size: 14px;
+    }
+}

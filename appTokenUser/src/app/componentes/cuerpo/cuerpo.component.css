@@ -1,0 +1,197 @@
+/* Contenedor principal */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Mensaje de error */
+.alert {
+  margin-top: 20px;
+  font-size: 1.1rem;
+}
+
+/* Contenedor de la barra de búsqueda */
+.barra-busqueda-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Estilo para la barra de búsqueda */
+.barra-busqueda {
+  width: 100%;
+  max-width: 600px;
+}
+
+
+/* Botón de recarga */
+.btn-recargar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.btn-recargar .btn {
+  width: 150px;
+  font-size: 1rem;
+}
+
+/* Alerta de universidad no encontrada */
+.alert-danger {
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Contenedor de universidades */
+.contenedor-universidades {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Estilo para cada tarjeta de universidad */
+.card {
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  /* max-width: 100%; */
+  width: 100%;
+  /* Asegura un ancho uniforme */
+  height: 700px;
+  /* Asegura una altura uniforme */
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  object-fit: cover;
+  height: 200px;
+}
+
+/* Estilos para el cuerpo de la tarjeta */
+.card-body {
+  padding: 15px;
+  text-align: center;
+  overflow: hidden;
+  height: 80px;
+}
+
+
+
+
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  height: 60px;
+}
+
+.card-body .card-text {
+  font-size: 0.95rem;
+  color: #555;
+  display: -webkit-box;
+  /* Habilita el modo de diseño flexible para WebKit */
+  -webkit-line-clamp: 3;
+  /* Número máximo de líneas visibles */
+  -webkit-box-orient: vertical;
+  /* Configura la orientación en vertical */
+  overflow: hidden;
+  /* Oculta el contenido que se desborda */
+  text-overflow: ellipsis;
+  /* Muestra puntos suspensivos (...) */
+  word-wrap: break-word;
+  /* Permite que las palabras se dividan si son demasiado largas */
+  white-space: normal;
+  /* Permite los saltos de línea */
+}
+
+
+/* Enlace de la dirección web */
+.card-link {
+  display: block;
+  margin-bottom: 10px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.card-link:hover {
+  text-decoration: underline;
+}
+
+/* Botones de acción */
+.btn-group {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+.btn-group .btn {
+  width: 100px;
+  font-size: 0.9rem;
+}
+
+/* Paginación */
+.pagination-container {
+  margin-top: 30px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.page-item {
+  cursor: pointer;
+}
+
+.page-item .page-link {
+  color: #007bff;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  transition: background-color 0.2s;
+}
+
+.page-item .page-link:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.page-item.disabled .page-link {
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+.page-item .active .page-link {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* Responsivo para pantallas pequeñas */
+@media (max-width: 768px) {
+  .contenedor-universidades {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%;
+  }
+
+  .btn-group {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn-group .btn {
+    width: 100%;
+  }
+}

@@ -1,0 +1,88 @@
+/* Estilos generales */
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  /* Estilo del botón de OAuth */
+  .btn-oauth {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    color: #fff;
+    background-color: #db4437; /* Rojo de Google */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn-oauth:hover {
+    background-color: #c1351d;
+  }
+  
+  /* Estilo del formulario */
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  /* Estilo del contenedor de contraseña */
+  .password-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .password-container label {
+    font-size: 14px;
+  }
+  
+  /* Estilo del botón de login */
+  .btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Estilo de los enlaces */
+  .links {
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .links a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .links a:hover {
+    text-decoration: underline;
+  }
+  

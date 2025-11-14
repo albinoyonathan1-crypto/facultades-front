@@ -1,0 +1,149 @@
+
+
+.agregarComentario{
+    margin-bottom: 50px;
+}
+
+.mostrarRespuesta{
+    background-color: #fff;
+    border: none;
+
+}
+
+.botonResponder{
+    background-color: #fff;
+    border: none;
+    font-style: italic;
+}
+
+.botonResponder:hover{
+    color: green;
+}
+
+.botonEditar{
+    background-color: #fff;
+    border: none;
+    font-style: italic;
+}
+
+
+.botonEditar:hover{
+    color: blue;
+}
+
+.botonEliminar{
+    background-color: #fff;
+    border: none;
+    font-style: italic;
+}
+
+.botonEliminar:hover{
+    color: red;
+}
+
+.likeDislike{
+    display: flex;
+}
+
+.likeDislike  svg{
+    font-size: 220px;
+}
+
+.likeDislike svg:first-child{
+    margin-right: 10px;
+}
+
+.botonLike{
+    border: none;
+    background-color: white;
+}
+
+.comentario-eliminado {
+    font-weight: 400; /* Un peso de fuente intermedio */
+    color: #555; /* Un gris suave */
+    font-style: italic; /* Cursiva para dar énfasis */
+    border-bottom: 1px solid #ccc; /* Una línea sutil */
+    padding-bottom: 4px; /* Espaciado debajo del texto */
+}
+
+.imagen-usuario {
+    width: 50px; /* Tamaño fijo o ajustable */
+    height: 50px; /* Asegura proporción */
+    border-radius: 50%; /* Circular */
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra ligera */
+    object-fit: cover; /* Asegura que la imagen se ajuste correctamente */
+
+  }
+
+  .comentarios-container {
+    text-align: center;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    max-width: 600px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .comentarios-titulo {
+    font-size: 1.5rem;
+    margin: 10px 0;
+    color: #333;
+  }
+  
+  .comentarios-resaltado {
+    font-weight: bold;
+    color: #007bff; /* Azul primario */
+  }
+  
+  .comentarios-cantidad {
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: #555;
+  }
+  
+  .contenedor-general-comentarios{
+    margin-bottom: 60px; 
+    background-color: rgb(255, 255, 255); 
+    border-radius: 10px; 
+    padding: 10px; 
+    max-height: 600px; 
+    overflow-y: scroll;
+    border:  1px solid transparent;
+  }
+
+  .contenedor-general-comentarios:hover{
+    cursor: pointer;
+    border: 1px solid rgb(187, 187, 250);
+  }
+
+  
+  .botones-notificacion{
+    display: flex; flex-direction: row; justify-content: center; align-items: center;
+  }
+  
+  .botones-notificacion button{
+    background-color: transparent;
+    border-radius: 10px;
+    padding: 5px;
+    margin-bottom: 20px;
+    border: 2px solid;
+  }
+
+  .botones-notificacion button:hover{
+   background-color: #007bff;
+   color: white;
+   border: 2px solid #000;
+  }
+
+  .botones-notificacion button:not(:last-child){
+    margin-right: 10px;
+  }
+
+  .botones-notificacion button.seleccionado {
+    background-color: #007bff;
+    color: white;
+    border: 2px solid #000;
+}

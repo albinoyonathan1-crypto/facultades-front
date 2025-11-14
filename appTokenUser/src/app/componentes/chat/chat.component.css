@@ -1,0 +1,165 @@
+/* Barra lateral */
+.barra-lateral {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 95vh;  /* Altura completa de la pantalla */
+    width: 250px;   /* Ancho de la barra lateral */
+    background-color: #f7f7f7;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1); /* Sombra suave en el borde izquierdo */
+    padding: 15px;
+    overflow-y: auto;  /* Desplazamiento vertical si el contenido es grande */
+    z-index: 9999;
+    border-radius: 8px;  /* Bordes redondeados para suavizar el borde */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;  /* Espacio entre los elementos */
+}
+
+/* Estilo de cada usuario */
+.usuario-item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    background-color: #f7f7f7;
+    margin-bottom: 10px;
+}
+
+.usuario-item:hover {
+    background-color: #e4e6eb;  /* Efecto hover */
+}
+
+/* Icono en línea y fuera de línea */
+.usuario-icon {
+    width: 20px;  /* Icono más grande */
+    height: 20px;  /* Icono más grande */
+    border-radius: 50%;
+    margin-right: 15px;  /* Separación mayor para que no esté tan pegado */
+    border: 3px solid white;  /* Bordes más gruesos para mejorar el contraste */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra más marcada para mejor visibilidad */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;  /* Animación para transición */
+}
+
+/* Icono en línea */
+.usuario-icon.online {
+    background-color: #28a745;  /* Verde brillante para mayor visibilidad */
+    box-shadow: 0 0 10px rgba(40, 167, 69, 0.8); /* Sombra verde más intensa */
+}
+
+/* Icono fuera de línea */
+.usuario-icon.offline {
+    background-color: #969696;  /* Gris para indicar que está desconectado */
+}
+
+/* Nombre de usuario */
+.usuario-nick {
+    font-size: 16px;  /* Aumentar el tamaño del texto para mayor legibilidad */
+    font-weight: 600; /* Hacer el nombre más destacado */
+    color: #333;
+    letter-spacing: 0.3px;
+}
+
+/* Imagen de usuario */
+.imagen-usuario {
+    width: 18%;           /* Ancho ligeramente mayor */
+    height: auto;         /* Mantiene la proporción de la imagen */
+    border-radius: 50%;   /* Hace la imagen redonda */
+    border: 2px solid #ddd;  /* Borde suave alrededor de la imagen */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+    object-fit: cover;    /* Asegura que la imagen cubra el área sin distorsionarse */
+}
+
+/* Contenedor adicional para el usuario */
+.usuario-contenedor {
+    display: flex;           /* Alineación en línea para los elementos dentro del contenedor */
+    align-items: center;     /* Centrar verticalmente los elementos */
+    border-radius: 8px;      /* Bordes redondeados */
+    transition: background-color 0.3s ease;  /* Transición al pasar el ratón */
+}
+
+.usuario-contenedor:hover {
+    background-color: #e4e6eb; /* Efecto hover */
+}
+
+/* Estilo para el contenedor de usuario con notificación */
+.notificacion {
+    position: relative;
+    border: 2px solid transparent; /* Borde transparente inicialmente */
+    border-radius: 8px;
+    padding: 8px;
+    animation: parpadeo 2s infinite alternate; /* Animación para el parpadeo */
+}
+
+/* Definición de la animación para el parpadeo */
+@keyframes parpadeo {
+    0% {
+        border-color: transparent;
+    }
+    50% {
+        border-color: #f44336; /* Borde rojo brillante */
+    }
+    100% {
+        border-color: transparent;
+    }
+}
+
+/* Contenedor del chat box */
+.chat-box {
+    position: fixed;
+    bottom: 20px;
+    right: 270px; /* Ajusta el espacio para que no se sobreponga a la barra lateral */
+    width: 300px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 10000;
+}
+
+/* Estilo de los mensajes */
+.mensaje {
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #333;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 5px;
+}
+
+.mensaje-usuario {
+    background-color: #e4f3e9;
+    border-left: 3px solid #28a745;
+}
+
+/* Botón para enviar mensajes */
+.boton-enviar {
+    align-self: flex-end;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.boton-enviar:hover {
+    background-color: #218838;
+}
+
+/* Contenedor de entrada de texto */
+.input-texto {
+    border: 1px solid #ddd;
+    padding: 8px;
+    border-radius: 25px;
+    font-size: 14px;
+    width: 100%;
+}
+

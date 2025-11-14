@@ -1,0 +1,263 @@
+<div>
+    <form [formGroup]="formularioAltaUniversidad" (ngSubmit)="enviarFormulario($event)"
+        class="d-flex align-items-center">
+        <div class="contenedorGlobal container">
+            <p style="text-align: center; font-weight: bold; font-size: 20px;">{{indice + "/7"}}</p>
+            <div class="contenedorHijo container">
+                <div *ngIf="indice === 1" class="caja">
+                    <div class="contenedor-advertencia">
+                        <h4 style="text-align: center;">Recuerda que no se permiten registros duplicados</h4>
+                        <p style="text-align: center;">Utilize el buscador
+                            <a (click)="mostrarUnversidadBuscada()" class="btn-buscar"><svg
+                                    xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-search" viewBox="0 0 16 16">
+                                    <path
+                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                                </svg>
+                            </a> Para verificar que la universidad no se encuentra en los registros de la
+                            aplicación
+                        </p>
+
+                    </div>
+                    <div class="titulo">
+                        <h1 style="text-align: center;">Ingrese el nombre de la universidad</h1>
+                    </div>
+                    <div class="campoNombre ">
+                        <input style="width: 70%; margin: auto;" class="form-control" type="text"
+                            formControlName="nombre" id="nombre" placeholder="Nombre universidad" />
+                        <div class="botones-avance">
+                            <button class="btn btn-primary ms-2" type="button"
+                                [disabled]="formularioAltaUniversidad.get('nombre')?.errors != null"
+                                (click)="siguiente()">Siguiente</button>
+                        </div>
+                    </div>
+
+                    <div *ngIf="formularioAltaUniversidad.get('nombre')?.touched && formularioAltaUniversidad.get('nombre')?.errors?.['required']"
+                        class="alert alert-danger mt-2">
+                        Este campo es requerido
+                    </div>
+
+                    <div *ngIf="formularioAltaUniversidad.get('nombre')?.touched && formularioAltaUniversidad.get('nombre')?.errors?.['minlength']"
+                        class="alert alert-danger mt-2">
+                        Este campo necesita un mínimo de 4 caracteres
+                    </div>
+                </div>
+
+                <div *ngIf="indice === 2" class="caja">
+                    <div class="titulo">
+                        <h1 style="text-align: center;">Ingrese la dirección web</h1>
+                    </div>
+                    <div class="campoNombre d-flex align-items-center">
+                        <input style="width: 50%; margin: auto;" class="form-control" type="text"
+                            placeholder="https://ejemplo.com" formControlName="direccionWeb" />
+                        <div class="botones-avance">
+                            <button class="btn btn-primary ms-2" type="button" (click)="anterior()">Atrás</button>
+                            <button class="btn btn-primary ms-2" type="button"
+                                [disabled]="formularioAltaUniversidad.get('direccionWeb')?.errors != null"
+                                (click)="siguiente()">Siguiente</button>
+                        </div>
+                    </div>
+
+                    <div *ngIf="formularioAltaUniversidad.get('direccionWeb')?.touched && formularioAltaUniversidad.get('direccionWeb')?.errors?.['required']"
+                        class="alert alert-danger mt-2">
+                        Este campo es requerido
+                    </div>
+
+                    <div *ngIf="formularioAltaUniversidad.get('direccionWeb')?.touched && formularioAltaUniversidad.get('direccionWeb')?.errors?.['pattern']"
+                        class="alert alert-danger mt-2">
+                        La dirección ingresada no es válida
+                    </div>
+                </div>
+
+                <div *ngIf="indice === 3" class="caja">
+                    <div class="titulo">
+                        <h1 style="text-align: center;">Ingrese la dirección física</h1>
+                    </div>
+                    <div class="campoNombre d-flex align-items-center">
+                        <input style="width: 50%; margin: auto;" class="form-control" type="text"
+                            placeholder="ciudad/provincia/país" formControlName="direccionFisica" />
+                        <div class="botones-avance">
+                            <button class="btn btn-primary ms-2" type="button" (click)="anterior()">Atrás</button>
+                            <button class="btn btn-primary ms-2" type="button"
+                                [disabled]="formularioAltaUniversidad.get('direccionFisica')?.errors != null"
+                                (click)="siguiente()">Siguiente</button>
+                        </div>
+                    </div>
+
+                    <div *ngIf="formularioAltaUniversidad.get('direccionFisica')?.touched && formularioAltaUniversidad.get('direccionFisica')?.errors?.['required']"
+                        class="alert alert-danger mt-2">
+                        Este campo es requerido
+                    </div>
+
+                    <div *ngIf="formularioAltaUniversidad.get('direccionFisica')?.touched && formularioAltaUniversidad.get('direccionFisica')?.errors?.['minlength']"
+                        class="alert alert-danger mt-2">
+                        Este campo requiere un mínimo de 10 caracteres
+                    </div>
+                </div>
+
+                <div *ngIf="indice === 4" class="descripcion">
+                    <div class="titulo text-center" style="margin: auto">
+                        <h1>Ingrese una descripción sobre la universidad</h1>
+                    </div>
+                    <div class="campoDescripcion">
+                        <textarea class="form-control" placeholder="Descripción" rows="4"
+                            formControlName="descripcion"></textarea>
+                    </div>
+
+                    <div *ngIf="formularioAltaUniversidad.get('descripcion')?.touched && formularioAltaUniversidad.get('descripcion')?.errors?.['required']"
+                        class="alert alert-danger mt-2">
+                        Este campo es requerido
+                    </div>
+                    <div *ngIf="formularioAltaUniversidad.get('descripcion')?.touched && formularioAltaUniversidad.get('descripcion')?.errors?.['minlength']"
+                        class="alert alert-danger mt-2">
+                        Este campo requiere un mínimo de 30 caracteres
+                    </div>
+                    <div class="botonesDecripcion d-flex justify-content-center mt-3">
+                        <button class="btn btn-primary" type="button" (click)="anterior()">Atrás</button>
+                        <button class="btn btn-primary ms-2" type="button"
+                            [disabled]="formularioAltaUniversidad.get('descripcion')?.errors != null"
+                            (click)="siguiente()">Siguiente</button>
+                    </div>
+                </div>
+
+                <div *ngIf="indice === 5" class="imagenContainer container">
+                    <div>
+                        <h1 class="titulo text-center">Url imagen</h1>
+                        <input style="width: 50%; margin: auto;" type="text" class="form-control"
+                            placeholder="Cargue la url de la imagen" formControlName="imagen"
+                            (input)="changeImagen($event)" />
+                    </div>
+
+                    <div style="margin: auto; text-align: center;  margin-top: 10px;">
+                        <img src={{imagenPorDefecto}} class="imagenUniversidad" alt="" (error)="errorImagen()">
+                    </div>
+
+                    <div *ngIf="formularioAltaUniversidad.get('imagen')?.touched && formularioAltaUniversidad.get('imagen')?.errors?.['required']"
+                        class="alert alert-danger mt-2">
+                        Este campo es requerido
+                    </div>
+
+                    <div class="mt-3" style="text-align: center; margin-top: 10px;">
+                        <button class="btn btn-primary" type="button" (click)="anterior()">Atrás</button>
+                        <button class="btn btn-primary ms-2" type="button"
+                            [disabled]="formularioAltaUniversidad.get('imagen')?.errors != null"
+                            (click)="siguiente()">Siguiente</button>
+                    </div>
+                </div>
+
+                <div *ngIf="indice === 6" class="carreras">
+                    <div class="text-center">
+                        <h1 class="titulo text-center">¿Agregar carrera a la universidad?</h1>
+                    </div>
+
+                    <div class="agregarCarrera">
+                        <input type="text" class="form-control mb-2" placeholder="Nombre"
+                            formControlName="nombreCarrera" />
+                        <input type="text" class="form-control mb-2" placeholder="Grado"
+                            formControlName="gradoCarrera" />
+                        <input type="text" class="form-control mb-2" placeholder="Duración"
+                            formControlName="duracionCarrera" />
+                        <button class="btn btn-success" type="button" (click)="agregarCarreras()" [disabled]="!(formularioAltaUniversidad.get('nombreCarrera')?.value !== '' 
+                            && formularioAltaUniversidad.get('gradoCarrera')?.value !== '' 
+                            && formularioAltaUniversidad.get('duracionCarrera')?.value !== '')">Agregar</button>
+                    </div>
+
+
+                    <div *ngIf="formularioAltaUniversidad.get('nombreCarrera')?.touched && formularioAltaUniversidad.get('nombreCarrera')?.errors?.['required']"
+                        class="alert alert-danger mt-2">
+                        Este campo es requerido
+                    </div>
+                    <div *ngIf="formularioAltaUniversidad.get('gradoCarrera')?.touched && formularioAltaUniversidad.get('gradoCarrera')?.errors?.['required']"
+                        class="alert alert-danger mt-2">
+                        Este campo es requerido
+                    </div>
+                    <div *ngIf="formularioAltaUniversidad.get('duracionCarrera')?.touched && formularioAltaUniversidad.get('duracionCarrera')?.errors?.['required']"
+                        class="alert alert-danger mt-2">
+                        Este campo es requerido
+                    </div>
+
+                    <div class="botones-avance">
+                        <div class="mt-3">
+                            <button class="btn btn-primary" type="button" (click)="anterior()">Atrás</button>
+                            <button class="btn btn-primary ms-2" type="button"
+                                [disabled]="formularioAltaUniversidad.get('imagen')?.errors != null"
+                                (click)="siguiente()">Siguiente</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="indice === 7"
+                    style="display:flex; justify-content: center; flex-direction: column; align-items: center;">
+                    <div style="text-align: center;" *ngIf="!universidadCreada">
+                        <h1 style="text-align: center;">Califica la universidad!!</h1>
+                        <app-puntuacion (calificacionGuardada)="guardarCalificacion($event)"></app-puntuacion>
+                    </div>
+                    <div *ngIf="!universidadCreada" class="botones">
+                        <button type="button" class="btn btn-primary" (click)="anterior()"
+                            style="margin-left: 5px;">Atrás</button>
+                        <input [disabled]="formularioAltaUniversidad.invalid" class="btn btn-primary" type="submit"
+                            value="Enviar" style="margin-left: 5px;" />
+                    </div>
+
+                    <div *ngIf="universidadCreada" style="margin-top: 20px;">
+                        <a [routerLink]="['/detalleUniversidad', universidadCreada?.id]"
+                            class="btn btn-outline-primary">
+                           Ir a {{universidadCreada?.nombre}}
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div *ngIf="buscarUniversidad" style="max-width: 30%; margin: auto;">
+        <!-- Barra de búsqueda -->
+        <div class="barra-busqueda-container">
+            <div class="barra-busqueda">
+                <app-barra-busqueda
+                    (universdiadEncontrada)="manejarUniversidadesEncontradas($event)"></app-barra-busqueda>
+            </div>
+        </div>
+
+        <!-- Alerta de universidad no encontrada -->
+        <div *ngIf="universidadNoEncontrada" class="alert alert-danger">
+            Universidad no encontrada
+        </div>
+
+
+        <div class=" card mb-4" *ngIf="universidad">
+            <!-- Imagen de la universidad -->
+            <img [src]="universidad?.imagen" class="card-img-top" alt="Imagen de {{ universidad?.nombre }}"
+                (error)="manejarImagenNoCargada($event)" />
+
+            <!-- Información de la universidad -->
+            <div class="card-body">
+                <h5 class="card-title">{{ universidad?.nombre }}</h5>
+                <div style="min-height: 80px;">
+                    <p class="card-text">{{ universidad?.descripcion }}</p>
+                </div>
+                <!-- Enlace al sitio web de la universidad -->
+                <a [href]="universidad?.direccionWeb" target="_blank" rel="noopener noreferrer" class="card-link">
+                    {{ universidad?.direccionWeb }}
+                </a>
+
+                <!-- Dirección de la universidad -->
+                <p class="card-text">{{ universidad?.direccion }}</p>
+
+                <!-- Calificación promedio -->
+                <ng-container *ngIf="universidad?.listaCalificacion">
+                    <app-promedio-calificacion
+                        [listaCalificacion]="universidad?.listaCalificacion!"></app-promedio-calificacion>
+                </ng-container>
+
+                <!-- Botones de acción -->
+                <div class="btn-group" role="group">
+                    <a [routerLink]="['/detalleUniversidad', universidad?.id]" class="btn btn-outline-primary">
+                        Ver
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

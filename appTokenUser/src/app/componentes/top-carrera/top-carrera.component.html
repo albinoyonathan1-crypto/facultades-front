@@ -1,0 +1,56 @@
+<h2 class="text-center">Top Carreras</h2>
+
+<!-- Tabla para mostrar las carreras mejor calificadas -->
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Posición</th>
+            <th>Carrera</th>
+            <th>Universidad</th>
+            <th>Calificación</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Recorremos la lista de carreras -->
+        <tr *ngFor="let carrera of listaTopCarreras; let i = index">
+            <!-- Mostramos el índice ajustado por la cantidad de carreras cargadas -->
+            <th scope="row">{{ i + 1 + totalCarrerasCargadas }}</th>
+
+            <!-- Columna con el nombre de la carrera -->
+            <td style=" height: 200px;">
+                <a [routerLink]="['/detalle', carrera.id]" class="font-weight-bold text-dark text-decoration-none">
+                    {{ carrera.nombre }}
+                </a>
+            </td>
+
+            <!-- Columna con el botón para ver la universidad asociada -->
+            <td class="text-center">
+                <button class="btn btn-link" (click)="buscarUniversidadPorIdCarrera(carrera, i)">Ver
+                    universidad</button>
+
+                <!-- Mostrar la universidad seleccionada si coincide con el índice -->
+                <div *ngIf="universidad && indiceCarreraSeleccionada === i">
+                    <a [routerLink]="['/detalleUniversidad', universidad.id]" class="text-info">
+                        {{ universidad.nombre }}
+                    </a>
+                </div>
+            </td>
+
+            <!-- Columna con la lista de calificaciones (si existen) -->
+            <td *ngIf="carrera.listaCalificacion && carrera.listaCalificacion.length > 0">
+                <app-promedio-calificacion [listaCalificacion]="carrera.listaCalificacion"></app-promedio-calificacion>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Botones de paginación -->
+<div class="text-center mt-4">
+    <button class="btn btn-outline-primary" (click)="cargarMenosCarreras()" [disabled]="paginaActual === 0">
+        Anterior
+    </button>
+    <button class="btn btn-outline-primary" (click)="cargarMasCarreras(listaTopCarreras.length)"
+        [disabled]="listaTopCarreras.length < registrosPorPagina">
+        Siguiente
+    </button>
+</div>

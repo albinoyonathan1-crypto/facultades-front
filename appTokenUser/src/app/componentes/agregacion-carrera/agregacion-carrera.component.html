@@ -1,0 +1,19 @@
+<div *ngIf="!universidad" class="universidad-container">
+    <p>{{universidadAeditar?.nombre}}</p>
+    <img src="{{universidadAeditar?.imagen}}" alt="Imagen de la universidad" class="universidad-imagen">
+</div>
+
+<div class="contenedor-carreras">
+    <h1 class="titulo">Lista carreras</h1>
+    <div class="container" *ngIf="universidadAeditar">
+        <div class="grid">
+            <div class="card" *ngFor="let carrera of universidadAeditar.listaCarreras">
+                <a style="text-decoration: none; color: inherit; background-color: #F9F9F9; border: none;" [routerLink]="['/detalleUniversidad',universidadAeditar.id ,carrera.id]"
+                    class="btn btn-outline-primary">
+                    <h4 class="nombre-carrera">{{ carrera.nombre }}</h4>
+                </a>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-success btn-agregar-carrera" (click)="agregarCarrera()">Agregar carrera</button>
+</div>

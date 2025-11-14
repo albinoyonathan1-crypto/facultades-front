@@ -1,0 +1,38 @@
+appTokenUser/.angular/
+appTokenUser/node_modules/
+appTokenUser/.idea/
+appTokenUser/dist/
+
+# compiled output
+/dist
+/tmp
+/out-tsc
+
+# dependencies
+/node_modules
+
+# IDEs and editors
+/.idea
+/.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Angular build files
+/.angular/cache
+/.angular
+
+# environment files
+/src/environments/*.local.ts
+
+# misc
+.DS_Store
+Thumbs.db
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*

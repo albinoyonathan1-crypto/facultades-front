@@ -1,0 +1,36 @@
+.contenedor-padre{
+    display: flex;
+    width: 100%;
+    margin-top: 50px;
+    height: 100px;
+    background-color: #2a2a2a;
+}
+
+.contenedor-hijo{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+ }
+
+ .contenedor-hijo a{
+    text-decoration: none;
+    color: #fff;
+ }
+
+ .contenedor-hijo a:hover{
+    color: orange;
+ }
+
+.contenedor-hijo p{
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 0px;
+}
+
+
+.contenedor-hijo p:first-child{
+    color: orangered;
+    margin-bottom: 5px;
+}

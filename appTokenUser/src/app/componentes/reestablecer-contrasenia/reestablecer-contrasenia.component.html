@@ -1,0 +1,54 @@
+<div *ngIf="!contraseniaRestablecida && !cargando && !error" class="register-container">
+    <h1>Reestabablecer contraseña</h1>
+
+    <form [formGroup]="restablecerForm" (ngSubmit)="enviar()">
+        <div>
+            <label for="email">Email</label>
+        
+            <input type="text" placeholder="ejemplo@gmail.com" [value]="email" readonly />
+        </div>
+
+        <div class="input-group">
+            <label for="password">Ingresa tu nueva contraseña</label>
+            <input [type]="mostrarContrasenia ? 'text' : 'password'" id="password" formControlName="password"
+                placeholder="Contraseña" autocomplete="new-password" />
+            <div class="error-message"
+                *ngIf="restablecerForm.get('password')?.touched && restablecerForm.get('password')?.invalid">
+                <span *ngIf="restablecerForm.get('password')?.errors?.['required']">La contraseña es obligatoria.</span>
+                <span *ngIf="restablecerForm.get('password')?.errors?.['contraseniaValida']">
+                    La contraseña debe contener al menos una mayúscula, un número y un carácter especial.
+                </span>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label for="repeat-password">Repite tu contraseña</label>
+            <input [type]="mostrarContrasenia ? 'text' : 'password'" id="repeat-password"
+                formControlName="repeatPassword" placeholder="Repite tu contraseña" autocomplete="new-password" />
+            <div class="error-message"
+                *ngIf="restablecerForm.get('repeatPassword')?.touched && restablecerForm.errors?.['concidencia']">
+                Las contraseñas no coinciden.
+            </div>
+        </div>
+
+        <div class="checkbox-group">
+            <input type="checkbox" id="show-password" (change)="mostrarContrasenia = !mostrarContrasenia" />
+            <label for="show-password">Mostrar contraseña</label>
+        </div>
+
+        <button type="submit" [disabled]="restablecerForm.invalid"  class="btn-submit">Restablecer contraseña</button>
+    </form>
+</div>
+<div *ngIf="cargando" class="loading-message">
+    <p>Cargando...</p>
+</div>
+
+<!-- Mensaje de cuenta creada -->
+<div *ngIf="contraseniaRestablecida" class="account-created-container">
+    <p>Tu contraseña se ha restablecido exitosamente.</p>
+</div>
+
+<div *ngIf="error" class="error-container">
+    <p>Error, tu contraseña no ha podido ser reestablecida</p>
+</div>
+

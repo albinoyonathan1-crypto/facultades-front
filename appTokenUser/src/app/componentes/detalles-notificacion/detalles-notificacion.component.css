@@ -1,0 +1,203 @@
+.section {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px 0;
+    background-color: #f9f9f9;
+    transition: box-shadow 0.3s ease;
+}
+
+.section:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+    font-size: 1.5em;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.detail, .description, .address {
+    font-size: 1em;
+    color: #666;
+    margin: 4px 0;
+}
+
+.comment-container {
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 12px;
+    border-left: 4px solid #007bff;
+    margin-top: 8px;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.username {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.date {
+    font-size: 0.9em;
+    color: #888;
+}
+
+.message {
+    font-size: 1em;
+    color: #333;
+    margin: 8px 0;
+}
+
+.universidad {
+    text-align: center; /* Centra el contenido en el contenedor */
+}
+
+.university-image {
+    width: 50%; /* Mantén el tamaño que desees */
+    border: 1px solid;
+    margin: 0 auto; /* Asegura que la imagen tenga márgenes automáticos para centrarla */
+    display: block; /* Necesario para que el margen automático funcione */
+}
+
+.respuesta {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px 0;
+    background-color: #f9f9f9;
+    transition: box-shadow 0.3s ease;
+}
+
+.respuesta:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.respuesta-container {
+    margin-top: 8px;
+}
+
+.mensaje {
+    font-size: 1.1em;
+    color: #333;
+    margin-bottom: 12px;
+}
+
+.respuesta-details {
+    font-size: 0.9em;
+    color: #666;
+    line-height: 1.5;
+}
+
+.fecha {
+    margin: 4px 0;
+}
+
+.editado {
+    color: #f39c12; /* Color para indicar que ha sido editado */
+}
+
+.usuario {
+    font-weight: bold;
+    color: #007bff; /* Color para el nombre de usuario */
+}
+
+.usuario-id {
+    color: #888; /* Color más tenue para el ID de usuario */
+}
+
+.btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.eliminar-reportar {
+    background-color: #dc3545; /* Color diferente para el botón de reportar */
+}
+
+.eliminar-reportar:hover {
+    background-color: #c82333; /* Color más oscuro al pasar el ratón */
+}
+
+.mensaje-error {
+    background-color: #ffe6e6;
+    border: 1px solid #ff4d4d;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 20px 0;
+    color: #000000;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.div-infraccion{
+    background-color: #e6f7e6; /* Fondo verde claro para indicar éxito */
+    border: 1px solid #4caf50; 
+    border-radius: 8px; 
+    padding: 15px; 
+    margin: 10px 0; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    font-family: Arial, sans-serif; 
+    max-width: 400px; 
+    text-align: center; 
+}
+
+.p-infraccion {
+    color: #4caf50;
+    font-size: 16px; 
+    font-weight: bold; 
+    margin: 0; 
+}
+
+.infracciones-altas{
+    color: red; 
+}
+
+.cargando {
+    font-size: 18px;
+    color: #007bff;
+    font-weight: bold;
+    margin-bottom: 20px;
+    /* Animación */
+    animation: parpadeo 1.5s infinite;
+    /* Centrado usando Flexbox */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+  }
+  
+  @keyframes parpadeo {
+    0%, 100% {
+      opacity: 1; /* Totalmente visible */
+    }
+    50% {
+      opacity: 0; /* Completamente invisible */
+    }
+  }
+
+  .mensaje-eliminacion, .mensaje-sancion {
+    font-size: 12px;
+    color: #d9534f; /* Rojo suave */
+    font-weight: bold;
+    background-color: #f8d7da; /* Fondo rojo claro */
+    padding: 5px 10px;
+    border-radius: 5px;
+    border-left: 4px solid #d9534f;
+    margin-top: 10px;
+}

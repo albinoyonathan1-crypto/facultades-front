@@ -1,0 +1,11 @@
+.contenedorPuntaje{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contenedorEstrellas{
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}

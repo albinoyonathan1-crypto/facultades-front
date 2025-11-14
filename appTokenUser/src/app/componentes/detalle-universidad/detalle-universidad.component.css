@@ -1,0 +1,292 @@
+/* Estilos generales */
+.titulo {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .cabezera-descripcion {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+ 
+  }
+  
+  .contenedor-imagen img {
+    max-width: 100%;
+    border-radius: 10px;
+  }
+  
+  .descripcion-universidad {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    max-height: 600px;
+    overflow-y: scroll;
+  }
+  
+  .contenedor-global {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contenedor-cabecera h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+  
+  .contenedor-cabecera p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  /* Estilos para el componente de comentarios */
+  .agregarComentario {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .agregarComentario .cabecera {
+    margin-bottom: 15px;
+  }
+  
+  .agregarComentario h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .agregarComentario textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    font-size: 1rem;
+  }
+  
+  .agregarComentario button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.2rem;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .agregarComentario button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Estilos para el componente de carrera */
+  #selectCarrera {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+  
+  .grid {
+    display: flex; /* Cambiar a flexbox */
+    flex-wrap: wrap; /* Permite que las tarjetas salten a la siguiente línea si no caben */
+    justify-content: center; /* Centra las tarjetas horizontalmente */
+
+  }
+  
+  .card {
+    all: unset; /* Elimina estilos predeterminados del botón */
+    display: flex; /* Flex para centrar contenido dentro de la tarjeta */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    width: 200px; /* Fijar un ancho consistente para las tarjetas */
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+  }
+  
+  .contenedor-carreras {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+    border: 1px solid #dbdbdb;
+    border-radius: 10px;
+  }
+  
+  .contenedor-carreras .titulo {
+    font-weight: 400;
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+  
+  .datos-basicos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .imagen-repetida {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 400px;
+    background-repeat: repeat;
+    background-size: contain;
+    background-position: center;
+  }
+  
+  .btn-ver-puntuacion{
+    background-color: transparent; 
+    border-radius: 10px; 
+    padding: 10px
+  }
+
+  .btn-ver-puntuacion:hover{
+    background-color: #007bff;
+    color: white;
+    border: 2px solid white;
+  }
+
+
+
+
+
+
+  /* Estilos generales */
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* Ajustes para tablets y pantallas medianas */
+@media (max-width: 1024px) {
+  .titulo h1 {
+      font-size: 28px;
+      text-align: center;
+  }
+
+  .cabezera-descripcion {
+      flex-direction: column;
+      text-align: center;
+  }
+
+  .imagen-repetida {
+      width: 100%;
+      height: 250px;
+      background-size: cover;
+      background-position: center;
+  }
+
+  .descripcion-universidad {
+      width: 100%;
+      text-align: center;
+  }
+
+  .contenedor-global {
+      flex-direction: column;
+  }
+
+  .contenedor-carreras {
+      width: 100%;
+  }
+
+  .grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+  }
+
+  .grid .card {
+      width: 45%;
+      margin: 5px;
+  }
+
+  .agregarComentario {
+      width: 100%;
+  }
+
+  textarea {
+      width: 100%;
+  }
+}
+
+/* Ajustes para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+  .titulo h1 {
+      font-size: 24px;
+  }
+
+  .imagen-repetida {
+      height: 200px;
+  }
+
+  .grid .card {
+      width: 100%;
+      margin: 5px 0;
+  }
+
+  .descripcion-universidad p {
+      font-size: 14px;
+  }
+
+  .agregarComentario {
+      padding: 10px;
+  }
+
+  .agregarComentario .btn {
+      width: 100%;
+  }
+}
+
+/* Ajustes para móviles muy pequeños */
+@media (max-width: 480px) {
+  .titulo h1 {
+      font-size: 20px;
+  }
+
+  .imagen-repetida {
+      height: 150px;
+  }
+
+  .descripcion-universidad p {
+      font-size: 12px;
+  }
+
+  .agregarComentario h2 {
+      font-size: 18px;
+  }
+
+  .grid {
+      flex-direction: column;
+  }
+
+  .grid .card {
+      width: 100%;
+  }
+
+  .btn {
+      font-size: 14px;
+      padding: 8px;
+  }
+}

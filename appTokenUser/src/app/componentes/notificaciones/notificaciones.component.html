@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="botones-notificacion">
+    <button (click)="filtrarNotificaciones(true, false, false, 'general')"
+      [ngClass]="{ 'seleccionado': filtroSeleccionado === 'general' }">General</button>
+    <button (click)="filtrarNotificaciones(false, true, false, 'respuestas')"
+      [ngClass]="{ 'seleccionado': filtroSeleccionado === 'respuestas' }">Respuestas</button>
+    <button *ngIf="admin" (click)="filtrarNotificaciones(false, false, true, 'auditoria')"
+      [ngClass]="{ 'seleccionado': filtroSeleccionado === 'auditoria' }">Auditoria</button>
+  </div>
+</div>
+
+<div *ngIf="!eliminando">
+  <div *ngFor="let notificacion of listaFiltrada" class="card mb-3">
+    <div class="card-body">
+      <!-- Información de la notificación -->
+      <p class="card-text">{{ notificacion.informacion }}</p>
+
+      <!-- Enlace para ver detalles -->
+      <a class="text-primary text-decoration-underline" (click)="irADetalleNotificacion(notificacion)">
+        Ver detalles
+      </a>
+
+      <!-- Botón para eliminar notificación -->
+      <button (click)="eliminarNotificacion(notificacion)" class="btn btn-danger btn-sm mt-2">
+        Eliminar
+      </button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="eliminando" class="cargando">
+  <p>Cargando...</p>
+</div>
+
+<!-- Botón para marcar notificaciones como vistas -->
+<div class="text-center my-4">
+  <button [disabled]="notificaciones.length === 0" (click)="visualizarNotificacionesByUserID()" class="btn btn-success">
+    Eliminar todas las notificaciones
+  </button>
+</div>

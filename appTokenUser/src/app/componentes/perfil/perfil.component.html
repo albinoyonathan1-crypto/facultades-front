@@ -1,0 +1,108 @@
+<div class="contenedor-perfil">
+    <h2>Mi perfil</h2>
+    <p class="username">Usuario: {{usuario?.username}}</p>
+    <p class="username">Nickname: {{usuario?.nick}}</p>
+    <p class="username">Rol: {{usuario?.listaRoles?.[0]?.nombreRol}}</p>
+    <p  class="username">Infracciones: {{usuario?.infracciones}}</p>
+    <img class="imagen-usuario"
+        [src]="usuario?.imagen"
+        alt="imagen usuario" (error)="manejarImagenNoCargada($event)">
+    <div class="contenedor-botones">
+        <button class="boton-primario" (click)="cambiarImagen()">Cambiar imagen de perfil</button>
+        <button class="boton-secundario" (click)="mostrarFormularioContrasenia()">Cambiar contraseña</button>
+    </div>
+</div>
+
+<div style="margin: auto; text-align: center;" class="container">
+    <h3>Información sobre el rol <button (click)="mostrarInformacionRol()"
+            style="border: none; background-color: transparent; cursor: pointer;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                class="bi bi-arrow-bar-down" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M1 3.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5M8 6a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 .708-.708L7.5 12.293V6.5A.5.5 0 0 1 8 6" />
+            </svg>
+        </button>
+    </h3>
+</div>
+
+<div *ngIf="infoRol" class="contenedor-perfil">
+    <div *ngIf="rolUsuario === 'ROLE_ADMIN'">
+        <p class="info-rol">
+            Como administrador, recibirás una notificación cada vez que se agregue una nueva carrera, universidad o
+            comentario al sistema.
+        </p>
+        <p class="actions-rol">
+            Podrás optar por eliminar publicaciones y sancionar a los usuarios que las hayan creado, si consideras que
+            incumplen las normas de la aplicación.
+            <a href="/normas" class="normas-link">Ver normas</a>
+        </p>
+    </div>
+    <div *ngIf="rolUsuario !== 'ROLE_ADMIN'">
+        <p class="info-rol">
+            Como usuario puedes cargar universidades y carreras al sistema asi como crear y responder comentarios.
+        </p>
+    </div>
+</div>
+
+<div class="contenedor-perfil" *ngIf="editarImagen">
+    <p style="font-weight: bold; font-size: 20px;">Vista previa</p>
+    <input type="text" [(ngModel)]="nuevaImagenPerfil" placeholder="Ingresa tu nueva imagen de perfil">
+    <img class="imagen-usuario"
+        [src]="nuevaImagenPerfil ? nuevaImagenPerfil : 'https://media.istockphoto.com/id/1409329028/vector/no-picture-available-placeholder-thumbnail-icon-illustration-design.jpg?s=612x612&w=0&k=20&c=_zOuJu755g2eEUioiOUdz_mHKJQJn-tDgIAhQzyeKUQ='"
+        alt="imagen usuario">
+    <button class="boton-primario" (click)="guardarNuevaImagenUsuario()">Guardar</button>
+</div>
+
+
+
+<div *ngIf="cambioContrasenia && formularioContrasenia" class="contenedor-perfil">
+    <p style="font-weight: bold; font-size: 20px;">Cambiar contraseña</p>
+    <form [formGroup]="formularioCambioContrasenia" (ngSubmit)="enviarFormularioCambioContrasenias()">
+        <div class="campos-contrasenias">
+            <input [type]="mostrarContrasenia ? 'text' : 'password'" class="form-control"
+                formControlName="nuevaContrasenia" name="" placeholder="Ingresa tu nueva contraseña" id="">
+            <input [type]="mostrarContrasenia ? 'text' : 'password'" class="form-control "
+                formControlName="repetirContrasenia" name="" placeholder="Repeti tu nueva contraseña" id="">
+            <input [type]="mostrarContrasenia ? 'text' : 'password'" class="form-control"
+                formControlName="contraseniaActual" name="" placeholder="Ingresa tu contraseña actual" id="">
+        </div>
+
+        <div class="error-message"
+            *ngIf="formularioCambioContrasenia.get('nuevaContrasenia')?.touched && formularioCambioContrasenia.get('nuevaContrasenia')?.invalid">
+            <span *ngIf="formularioCambioContrasenia.get('nuevaContrasenia')?.errors?.['required']">Este campo es
+                obligatorio.</span>
+            <span *ngIf="formularioCambioContrasenia.get('nuevaContrasenia')?.errors?.['contraseniaValida']">
+                La contraseña debe contener al menos una mayúscula, un número y un carácter especial.
+            </span>
+        </div>
+
+        <div class="error-message"
+            *ngIf="formularioCambioContrasenia.get('repetirContrasenia')?.touched && formularioCambioContrasenia.get('repetirContrasenia')?.invalid">
+            <span *ngIf="formularioCambioContrasenia.get('repetirContrasenia')?.errors?.['required']">Este campo es
+                obligatorio
+            </span>
+            <span *ngIf="formularioCambioContrasenia.get('repetirContrasenia')?.errors?.['coincidencia']">
+                contraseñas no coinciden
+            </span>
+        </div>
+
+        <div class="error-message"
+            *ngIf="formularioCambioContrasenia.get('contraseniaActual')?.touched && formularioCambioContrasenia.get('contraseniaActual')?.invalid">
+            <span *ngIf="formularioCambioContrasenia.get('contraseniaActual')?.errors?.['required']">Este campo es
+                obligatorio
+            </span>
+        </div>
+
+
+        <div class="checkbox-group">
+            <input type="checkbox" id="show-password" (change)="mostrarContrasenia = !mostrarContrasenia" />
+            <label style="margin-left: 10px;" for="show-password">Mostrar contraseña</label>
+        </div>
+
+
+        <div style="text-align: center;">
+            <button style="margin-top: 20px;" class="btn btn-primary"
+                [disabled]="formularioCambioContrasenia.invalid">Enviar</button>
+        </div>
+    </form>
+</div>

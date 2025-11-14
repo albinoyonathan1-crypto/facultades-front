@@ -1,0 +1,93 @@
+/* Estilos para el contenedor de las notificaciones */
+.card {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilo para el texto de la información de la notificación */
+  .card-text {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  /* Estilo para el enlace "Ver detalles" */
+  .text-primary {
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .text-primary:hover {
+    color: #0056b3; /* Cambia el color al pasar el mouse */
+  }
+  
+  /* Botón de eliminar */
+  .btn-danger {
+    background-color: #dc3545;
+    border: none;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-danger:hover {
+    background-color: #c82333;
+  }
+  
+  /* Botón para marcar como vistas */
+  .btn-success {
+    padding: 10px 20px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-success:hover {
+    background-color: #218838;
+  }
+  
+  /* Centrar el contenedor del botón "Marcar como vistas" */
+  .text-center {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .botones-notificacion{
+    display: flex; flex-direction: row; justify-content: center; align-items: center;
+  }
+  
+  .botones-notificacion button{
+    background-color: transparent;
+    border-radius: 10px;
+    padding: 5px;
+    margin-bottom: 20px;
+    border: 2px solid;
+  }
+
+  .botones-notificacion button:hover{
+   background-color: #007bff;
+   color: white;
+   border: 2px solid #000;
+  }
+
+  .botones-notificacion button:not(:last-child){
+    margin-right: 10px;
+  }
+
+  .botones-notificacion button.seleccionado {
+    background-color: #007bff;
+    color: white;
+    border: 2px solid #000;
+}
+
+  .cargando{
+    font-size: 18px;
+    color: #007bff;
+    font-weight: bold;
+    margin-bottom: 20px;
+    animation: loading 1.5s infinite;
+    /* Centrado usando Flexbox */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+  }
+
